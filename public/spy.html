@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Controller Page</title>
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+        <h1>SPY</h1>
+        
+        <script>
+            let socket = io();
+            socket.on('connect', function(){
+                console.log("I am connected - " + socket.id);
+            });
+
+            document.querySelector('').addEventListener('click',function(){
+                console.log('Red button clicked');
+                socket.emit('red_event');
+            });
+        </script>
+    </body>
+</html>
