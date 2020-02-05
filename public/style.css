@@ -1,20 +1,34 @@
 /*sets the background color*/
 body{
     background-color: #f1f1f1;
+    font-family: helvetica;
     
+
+}
+
+.header{
+  text-align: center;
+  color: #10113C;
+}
+
+.windows{
+        
     display: flex;
     margin: auto;
-
     justify-content:center;
 }
 
+
 img{
-	max-width: 60%;
-    height: auto;  
-    padding: 20px;
+    max-width: 70%;
+    
+	height: auto;
 }
 
-div{
-    flex-direction: row;
-    display: flex;
+/*for media screen for Iphone*/
+@media screen and (max-width: 500px){
+.hide{
+    display: none;
+}
+	
 }
