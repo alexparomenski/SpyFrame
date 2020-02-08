@@ -7,6 +7,7 @@
         <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script> 
         <script src="/socket.io/socket.io.js"></script>
+        <script src="js/direction-collider.js"></script>
     </head>
     <body>
         <a-scene shadow="type: pcfsoft">
@@ -18,16 +19,19 @@
             <a-entity environment = "preset:starry;"></a-entity> 
 
             <!-- Camera -->
-            <a-entity id = cam_rig, position = "0 0.5 0">
-                <a-camera class = "cam" look-controls position = "0 1.3 0" far="1000000000">  
-                    <a-entity light="type:point; intensity:0.9; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:10;" position="0 0 0.9" ></a-entity>
+            <a-entity id = "cam_rig" position = "0 1.8 0">
+                <a-camera id = "cam_object" class = "cam_class" look-controls position = "0 0 0" far="1000000000">  
+                    <a-entity light="type:point; color:green; intensity:0.9; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:10;" position="0 0 0.9" ></a-entity>
                     <a-entity   cursor="rayOrigin:mouse;"
                             raycaster="far:30; interval:100; objects:.clickable;">
                         
                     </a-entity>
                     <a-entity   class="targetDir"
                                 position="0 0 -1">
-                    </a-entity>       
+                    </a-entity>     
+                    <a-entity id="directionVec" direction-collider="" raycaster="far:0.5; near: 0.001; interval:10; objects:.facility">
+                        
+                    </a-entity>  
 
                 </a-camera>        
             </a-entity>
@@ -42,6 +46,7 @@
 
             <!-- The Facility shell, most dynamic stuff will be separate -->
             <a-entity   id = "facility_boi"
+                class = "facility"
                 position = "0 1.5 0"
                 rotation = "0 0 0"
                 scale = "1 1 1"
@@ -96,6 +101,7 @@
 
         </a-scene>
 
+        <!--
         <h1>SPY</h1>
         
         <script>
@@ -109,5 +115,6 @@
                 socket.emit('red_event');
             });
         </script>
+        -->
     </body>
 </html>
