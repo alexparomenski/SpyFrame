@@ -16,12 +16,10 @@
                 <a-asset-item id="facility_model"   response-type="arraybuffer" src="models/facility.glb"></a-asset-item>
             </a-assets>
 
-            <a-entity environment = "preset:starry;"></a-entity> 
-
             <!-- Camera -->
             <a-entity id = "cam_rig" position = "0 1.8 0">
                 <a-camera id = "cam_object" class = "cam_class" look-controls position = "0 0 0" far="1000000000">  
-                    <a-entity light="type:point; color:green; intensity:0.9; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:10;" position="0 0 0.9" ></a-entity>
+                    <a-entity light="type:point; color:green; intensity:1.8; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:10;" position="0 0 0.9" ></a-entity>
                     <a-entity   cursor="rayOrigin:mouse;"
                             raycaster="far:30; interval:100; objects:.clickable;">
                         
@@ -44,58 +42,86 @@
                 gltf-model = "#monster_model">
             </a-entity>
 
-            <!-- The Facility shell, most dynamic stuff will be separate -->
+            <!-- The Facility, most dynamic stuff will be separate -->
             <a-entity   id = "facility_boi"
                 class = "facility"
                 position = "0 1.5 0"
                 rotation = "0 0 0"
                 scale = "1 1 1"
                 shadow="cast: true; receive: true;"
-                gltf-model = "#facility_model">
+                gltf-model = "#facility_model"
+                material = "dithering: false">
             </a-entity>
 
-            <!-- Laser Beam -->
-            <a-entity id = "laser_beam"
-                    position = "13 1.5 -16"
-                    rotation = "0 0 0"
-                    scale = "9 0.06 0.06"
-                    animation="property: rotation; from: 0 0 -9; to: 0 0 9; loop: true; dur: 400; easing: easeInOutCubic; dir: alternate;">
-                <a-entity   id = "laser_beam"
-                    position = "-0.5 0 0"
+            <a-entity id = "laser_beams">
+                <a-entity id = "laser_collider"
+                    class = "facility"
+                    position = "9 1.5 -15"
                     rotation = "0 0 0"
                     scale = "1 1 1"
-                    geometry="primitive: box; width: 1; height: 1; depth: 1;"
-                    material="color: red">
+                    geometry="primitive: box; width: 8; height: 4; depth: 2;"
+                    material="opacity:0;transparent:true; blending:additive;alphaTest:1">
                 </a-entity>
-            </a-entity>
 
-            <!-- Laser Beam 2 -->
-            <a-entity id = "laser_beam"
-                    position = "5 1.7 -15"
-                    rotation = "0 0 0"
-                    scale = "9 0.06 0.06"
-                    animation="property: rotation; from: 0 180 -9; to: 0 180 9; loop: true; dur: 300; easing: easeInOutCubic; dir: alternate;">
-                <a-entity   id = "laser_beam"
-                    position = "-0.5 0 0"
-                    rotation = "0 0 0"
-                    scale = "1 1 1"
-                    geometry="primitive: box; width: 1; height: 1; depth: 1;"
-                    material="color: red">
+                <!-- Laser Beam -->
+                <a-entity id = "laser_beam"
+                        position = "13 1.5 -16"
+                        rotation = "0 0 0"
+                        scale = "9 0.06 0.06"
+                        animation="property: rotation; from: 0 0 -9; to: 0 0 9; loop: true; dur: 900; easing: easeInOutCubic; dir: alternate;">
+                    <a-entity   id = "laser_beam"
+                        position = "-0.5 0 0"
+                        rotation = "0 0 0"
+                        scale = "1 1 1"
+                        geometry="primitive: box; width: 1; height: 1; depth: 1;"
+                        material="color: red; blending: additive; emissive: #F00; opacity: 0.7;">
+                        <a-entity light="type:point; color:red; intensity:1.8; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:10;" position="0 0 0" ></a-entity>
+                    </a-entity>
                 </a-entity>
-            </a-entity>
 
-            <!-- Laser Beam 3 -->
-            <a-entity id = "laser_beam"
-                    position = "5 1.2 -14"
-                    rotation = "0 0 0"
-                    scale = "9 0.06 0.06"
-                    animation="property: rotation; from: 0 180 -9; to: 0 180 9; loop: true; dur: 500; easing: easeInOutCubic; dir: alternate;">
-                <a-entity   id = "laser_beam"
-                    position = "-0.5 0 0"
-                    rotation = "0 0 0"
-                    scale = "1 1 1"
-                    geometry="primitive: box; width: 1; height: 1; depth: 1;"
-                    material="color: red">
+                <!-- Laser Beam 2 -->
+                <a-entity id = "laser_beam"
+                        position = "5 1.7 -15"
+                        rotation = "0 0 0"
+                        scale = "9 0.06 0.06"
+                        animation="property: rotation; from: 0 180 -9; to: 0 180 9; loop: true; dur: 800; easing: easeInOutCubic; dir: alternate;">
+                    <a-entity   id = "laser_beam"
+                        position = "-0.5 0 0"
+                        rotation = "0 0 0"
+                        scale = "1 1 1"
+                        geometry="primitive: box; width: 1; height: 1; depth: 1;"
+                        material="color: red; blending: additive; emissive: #F00; opacity: 0.7;">
+                    </a-entity>
+                </a-entity>
+
+                <!-- Laser Beam 3 -->
+                <a-entity id = "laser_beam"
+                        position = "5 1.2 -14"
+                        rotation = "0 0 0"
+                        scale = "9 0.06 0.06"
+                        animation="property: rotation; from: 0 180 -9; to: 0 180 9; loop: true; dur: 1000; easing: easeInOutCubic; dir: alternate;">
+                    <a-entity   id = "laser_beam"
+                        position = "-0.5 0 0"
+                        rotation = "0 0 0"
+                        scale = "1 1 1"
+                        geometry="primitive: box; width: 1; height: 1; depth: 1;"
+                        material="color: red; blending: additive; emissive: #F00; opacity: 0.7;">
+                    </a-entity>
+                </a-entity>
+
+                <!-- Laser Beam 4 -->
+                <a-entity id = "laser_beam"
+                        position = "13 1.1 -14.5"
+                        rotation = "0 0 0"
+                        scale = "9 0.06 0.06"
+                        animation="property: rotation; from: 0 0 -9; to: 0 0 9; loop: true; dur: 1300; easing: easeInOutCubic; dir: alternate;">
+                    <a-entity   id = "laser_beam"
+                        position = "-0.5 0 0"
+                        rotation = "0 0 0"
+                        scale = "1 1 1"
+                        geometry="primitive: box; width: 1; height: 1; depth: 1;"
+                        material="color: red; blending: additive; emissive: #F00; opacity: 0.7;">
+                    </a-entity>
                 </a-entity>
             </a-entity>
 

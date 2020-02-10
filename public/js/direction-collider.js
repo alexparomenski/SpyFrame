@@ -29,44 +29,51 @@ AFRAME.registerComponent('direction-collider', {
         vec.x = position.x-lastpos.x;
         vec.y = position.y-lastpos.y;
         vec.z = position.z-lastpos.z;
-
-        vec = this.el.object3D.worldToLocal(vec);
+        vec.x*=100;
+        vec.y*=100;
+        vec.z*=-100;
+        console.log(vec);
+        vec = Oplayer.object3D.worldToLocal(vec);
 
         var rot = new THREE.Vector3();
         rot.x=0;
         
         if (vec.x!=0 || vec.z!=0)
         {
-            rot.y=Math.atan(vec.x/vec.z)*(360 / (Math.PI * 2));
+            rot.y=Math.atan2(vec.x,vec.z)*(180 / (Math.PI));
         }
         
         rot.z=0;
-        this.el.setAttribute('rotation', rot);
+        if (rot.y!=0)
+        {
+            this.el.setAttribute('rotation', rot);
+        }
         
-        lastpos = position;
-
-        console.log(rot.y);
-
-        if (collided==null) { return; }  // Not intersecting.
-        console.log("uncollided!");
-        var norm = new THREE.Vector3();
-        norm = face.normal;
-        norm.x=-norm.x;
-        norm.y=-norm.y;
-        norm.z=-norm.z;
-        norm.x *= (dist-0.5);
-        norm.y *= (dist-0.5);
-        norm.z *= (dist-0.5);
-        console.log(face.normal);
         
-        console.log(position);
-        position.x+=norm.x;
-        position.y+=norm.y;
-        position.z+=norm.z;
-        console.log(position);
-        console.log(position);
-        position.y=0;
-        Oplayer.setAttribute('position', position);
-       
+
+        //console.log(rot.y);
+
+        if (collided!=null) {
+            console.log("collided!");
+            var norm = new THREE.Vector3();
+            norm = face.normal;
+            norm.x=-norm.x;
+            norm.y=-norm.y;
+            norm.z=-norm.z;
+            norm.x *= (dist-0.6);
+            norm.y *= (dist-0.6);
+            norm.z *= (dist-0.6);
+            console.log(face.normal);
+            
+            console.log(position);
+            position.x+=norm.x;
+            position.y+=norm.y;
+            position.z+=norm.z;
+            console.log(position);
+            console.log(position);
+            position.y=0;
+            Oplayer.setAttribute('position', position);
+        }
+        lastpos = Oplayer.object3D.getWorldPosition(position);  
     }
 });
