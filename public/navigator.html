@@ -28,8 +28,8 @@
                    
                     //obtain x pos and map
                     var xPos = data;
-                    dotPos = xPos.map(-10, 10 , 0, 667); 
-                    charDot.style.left = dotPos + "px";
+                    dotPos = xPos.map(-1, 12 , 0, 667); 
+                    charDot.style.top = dotPos + "px";
                     console.log("The player is located at: " + charDot.x);
                 });
                 socket.on('sendZPos', function (data){
@@ -37,8 +37,8 @@
                     charDot = document.querySelector(".character");
                     //obtain z Pos and map
                     var zPos = data;
-                    dotPos = zPos.map(-10, 10 , 0, 375); 
-                    charDot.style.top = dotPos + "px";
+                    dotPos = zPos.map(3, -19 , 0, 375); 
+                    charDot.style.left = dotPos + "px";
                    // console.log("The player is located at: " + zPos);
                 });
             });

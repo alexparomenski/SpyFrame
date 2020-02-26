@@ -132,18 +132,22 @@
         <script>
             let socket = io();
             socket.on('connect', function(){
-                console.log("I am connected - " + socket.id);
+                //console.log("I am connected - " + socket.id);
             });
 
-            camera = document.querySelector("#cam_rig");              //finds camera
+            camera = document.querySelector(".cam_class");              //finds camera
             playerPos= camera.getAttribute('position')
+
             console.log(camera);
-            //console.log(playerPos);
+            console.log(playerPos);
+
             setInterval(function() {
                 socket.emit("playerPosX", playerPos.x);
                 socket.emit("playerPosZ", playerPos.z);
             }, 1000 / 60);
-        </script>
+              
 
+            
+        </script>
     </body>
 </html>

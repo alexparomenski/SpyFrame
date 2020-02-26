@@ -1,7 +1,7 @@
 AFRAME.registerComponent('direction-collider', {
     dependencies: ['raycaster'],
     init : function(){
-        console.log("init component");
+      //  console.log("init component");
         var raycaster;
         collided=null;
         face = (0,0,0);
@@ -32,7 +32,7 @@ AFRAME.registerComponent('direction-collider', {
         vec.x*=100;
         vec.y*=100;
         vec.z*=-100;
-        console.log(vec);
+       // console.log(vec);
         vec = Oplayer.object3D.worldToLocal(vec);
 
         var rot = new THREE.Vector3();
@@ -63,14 +63,14 @@ AFRAME.registerComponent('direction-collider', {
             norm.x *= (dist-0.6);
             norm.y *= (dist-0.6);
             norm.z *= (dist-0.6);
-            console.log(face.normal);
+           // console.log(face.normal);
             
             console.log(position);
             position.x+=norm.x;
             position.y+=norm.y;
             position.z+=norm.z;
-            console.log(position);
-            console.log(position);
+         //   console.log(position);
+          //  console.log(position);
             position.y=0;
             Oplayer.setAttribute('position', position);
         }
