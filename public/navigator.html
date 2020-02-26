@@ -3,15 +3,44 @@
     <head>
         <title>Navigator</title>
         <script src="/socket.io/socket.io.js"></script>
+        <link href="style.css" rel="stylesheet">
+        <title>Hacker</title>
     </head>
     <body>
+        <div class = "Map" style="width: 667px; height: 375px; background: #333F50;"> </div>
 
-        <h1>NAVIGATOR</h1>
+        <div class = "character" style="width: 15px; height: 15px; background: red;"></div>
+
+        
 
         <script>
-            let socket = io();
+          // link to the map forum for this   https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
+          let socket = io();
+            //map funtion 
+            Number.prototype.map = function (in_min, in_max, out_min, out_max) {
+                return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+            }
             socket.on('connect', function(){
                 console.log("I am connected - " + socket.id);
+                socket.on('sendXPos', function (data){
+                    //select dot
+                    charDot = document.querySelector(".character"); 
+                   
+                    //obtain x pos and map
+                    var xPos = data;
+                    dotPos = xPos.map(-10, 10 , 0, 667); 
+                    charDot.style.left = dotPos + "px";
+                    console.log("The player is located at: " + charDot.x);
+                });
+                socket.on('sendZPos', function (data){
+                    //select dot
+                    charDot = document.querySelector(".character");
+                    //obtain z Pos and map
+                    var zPos = data;
+                    dotPos = zPos.map(-10, 10 , 0, 375); 
+                    charDot.style.top = dotPos + "px";
+                   // console.log("The player is located at: " + zPos);
+                });
             });
         </script>
     </body>

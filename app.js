@@ -24,22 +24,17 @@ app.get('/Spy', function(req,res) {
 
 socketIO.on('connection', function(socket){
     console.log(socket.id + ' - a user connected');
-
-    socket.on('red_event', function (data){
-        console.log("Red event heard");
-        socketIO.sockets.emit('color_change', {r:255,g:0,b:0});
+  
+    socket.on("playerPosX", function (data){
+        //console.log("Recieving Position");
+        //console.log(data);
+        socketIO.sockets.emit('sendXPos', data);
     });
 
-    socket.on('green_event', function (data){
-        console.log("green event heard");
-        socketIO.sockets.emit('color_change', {r:0,g:255,b:0});
+    socket.on("playerPosZ", function (data){
+        //console.log("Recieving Position");
+        socketIO.sockets.emit('sendZPos', data);
     });
-
-    socket.on('blue_event', function (data){
-        console.log("Blue event heard");
-        socketIO.sockets.emit('color_change', {r:0,g:0,b:255});
-    });
-
 
     socket.on('disconnect', function(){
       console.log('user disconnected');

@@ -127,8 +127,7 @@
 
         </a-scene>
 
-        <!--
-        <h1>SPY</h1>
+
         
         <script>
             let socket = io();
@@ -136,11 +135,15 @@
                 console.log("I am connected - " + socket.id);
             });
 
-            document.querySelector('').addEventListener('click',function(){
-                console.log('Red button clicked');
-                socket.emit('red_event');
-            });
+            camera = document.querySelector("#cam_rig");              //finds camera
+            playerPos= camera.getAttribute('position')
+            console.log(camera);
+            //console.log(playerPos);
+            setInterval(function() {
+                socket.emit("playerPosX", playerPos.x);
+                socket.emit("playerPosZ", playerPos.z);
+            }, 1000 / 60);
         </script>
-        -->
+
     </body>
 </html>

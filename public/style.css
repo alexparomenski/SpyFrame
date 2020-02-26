@@ -26,6 +26,9 @@ img{
 	height: auto;
 }
 
+.character{
+    position: absolute;
+   }
 
 
 /*for media screen for Iphone*/
