@@ -6,14 +6,17 @@
         <Script src = "https://aframe.io/releases/1.0.3/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script> 
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="js/direction-collider.js"></script>
+        <script src="js/safe-controller.js"></script>
     </head>
     <body>
         <a-scene shadow="type: pcfsoft">
             <a-assets timeout="10000">
                 <a-asset-item id="monster_model"   response-type="arraybuffer" src="models/monster.glb"></a-asset-item>
-                <a-asset-item id="facility_model"   response-type="arraybuffer" src="models/facility.glb"></a-asset-item>
+                <a-asset-item id="facility_model"   response-type="arraybuffer" src="models/facility2.glb"></a-asset-item>
+                <a-asset-item id="safe_model"   response-type="arraybuffer" src="models/safe.glb"></a-asset-item>
             </a-assets>
 
             <!-- Camera -->
@@ -32,6 +35,19 @@
                     </a-entity>  
 
                 </a-camera>        
+            </a-entity>
+
+            <!-- Poor little monster-->
+            <a-entity   id = "safe_object"
+                class = "clickable"
+                position = "2 1.5 -15"
+                rotation = "0 180 0"
+                scale = "1 1 1"
+                shadow="cast: true; receive: true;"
+                gltf-model = "#safe_model"
+                animation-mixer="clip: Idle; loop: repeat"
+                safe-controller="">
+                <a-entity light="type:point; color:yellow; intensity:1.8; distance:10; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:10;" position="0 0 4" ></a-entity>
             </a-entity>
 
             <!-- Poor little monster-->
