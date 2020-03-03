@@ -54,22 +54,22 @@ AFRAME.registerComponent('direction-collider', {
         //console.log(rot.y);
 
         if (collided!=null) {
+            coldist = 0.6;
             console.log("collided!");
             var norm = new THREE.Vector3();
             norm = face.normal;
             norm.x=-norm.x;
             norm.y=-norm.y;
             norm.z=-norm.z;
-            norm.x *= (dist-0.6);
-            norm.y *= (dist-0.6);
-            norm.z *= (dist-0.6);
+            norm.x *= (dist-coldist);
+            norm.y *= (dist-coldist);
+            norm.z *= (dist-coldist);
             console.log(face.normal);
             
             console.log(position);
             position.x+=norm.x;
             position.y+=norm.y;
-            position.z+=norm.z;
-            console.log(position);
+            position.z-=norm.z;
             console.log(position);
             position.y=0;
             Oplayer.setAttribute('position', position);
