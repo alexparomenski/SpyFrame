@@ -53,6 +53,40 @@
                 material = "dithering: false">
             </a-entity>
 
+            <!-- Hallway Clue TextBox -->
+            <a-entity   id = "text_base"
+                geometry="shape:box; width:0.2; height:0.1; depth:0.1"
+                position = "9 1.5 -4"
+                rotation = "0 90 0"
+                material = "dithering: false; color:black">
+
+                <a-entity   id = "text"
+                    class = "text"
+                    text = "value: 921; align:center; color:#333333;"
+                    position = "0 0 0.06"
+                    rotation = "0 0 0"
+                    scale = "1 1 1"
+                    material = "dithering: false; color:black; opacity:0.3">
+                </a-entity>
+            </a-entity>
+
+            <!-- LaserRoom Clue TextBox -->
+            <a-entity   id = "text_base"
+                geometry="shape:box; width:0.2; height:0.1; depth:0.1"
+                position = "12 1.5 -12"
+                rotation = "0 225 0"
+                material = "dithering: false; color:black">
+
+                <a-entity   id = "text"
+                    class = "text"
+                    text = "value: 476; align:center; color:#333333;"
+                    position = "0 0 0.06"
+                    rotation = "0 0 0"
+                    scale = "1 1 1"
+                    material = "dithering: false; color:black; opacity:0.3">
+                </a-entity>
+            </a-entity>
+
             <a-entity id = "laser_beams">
                 <a-entity id = "laser_collider"
                     class = "facility"
