@@ -8,12 +8,15 @@
         <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script> 
         <script src="/socket.io/socket.io.js"></script>
         <script src="js/direction-collider.js"></script>
+        <script src= "js/animation-component.js"></script>
     </head>
     <body>
         <a-scene shadow="type: pcfsoft">
             <a-assets timeout="10000">
                 <a-asset-item id="monster_model"   response-type="arraybuffer" src="models/monster.glb"></a-asset-item>
                 <a-asset-item id="facility_model"   response-type="arraybuffer" src="models/facility.glb"></a-asset-item>
+                <a-asset-item crossorigin="anonymous" id="guard-obj" src="models/Guard.obj">
+                <img crossorigin="anonymous" id="guard-map" src="images/Guard.png">
             </a-assets>
 
             <!-- Camera -->
@@ -33,6 +36,20 @@
 
                 </a-camera>        
             </a-entity>
+
+            <!-- Guard  -->
+            <a-entity 
+                id = "guard" 
+                scale = "0.01 0.01 0.01"
+                position = "-10 0 0" 
+                rotation = "0 90 0"
+                obj-model="obj: #guard-obj;"
+                material = "src: #guard-map;"
+                animation =   "property:position;  from: -10 0 0;  to:0 0 0;      dur:5000; easing:easeInOutSine; startEvents:animationcomplete__3, animation-start;"
+                animation__2 ="property:position;  from: 0 0 0;    to: 0 0 -10;   dur:5000; easing:easeInOutSine; startEvents:animationcomplete; dir:alternate; loop:1;" 
+                animation__3 ="property:position;  from: 0 0 0;    to: -10 0 0;   dur:5000; easing:easeInOutSine; startEvents:animationcomplete__2;"
+                animation-component ="" 
+            ></a-entity>
 
             <!-- Poor little monster-->
             <a-entity   id = "monster_boi"
