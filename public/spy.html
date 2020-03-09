@@ -10,6 +10,7 @@
         <script src="/socket.io/socket.io.js"></script>
         <script src="js/direction-collider.js"></script>
         <script src="js/safe-controller.js"></script>
+        <script src="js/door-controller.js"></script>
     </head>
     <body>
         <a-scene shadow="type: pcfsoft">
@@ -17,6 +18,7 @@
                 <a-asset-item id="monster_model"   response-type="arraybuffer" src="models/monster.glb"></a-asset-item>
                 <a-asset-item id="facility_model"   response-type="arraybuffer" src="models/facility2.glb"></a-asset-item>
                 <a-asset-item id="safe_model"   response-type="arraybuffer" src="models/safe.glb"></a-asset-item>
+                <a-asset-item id="door_model"   response-type="arraybuffer" src="models/door.glb"></a-asset-item>
             </a-assets>
 
             <!-- Camera -->
@@ -37,9 +39,9 @@
                 </a-camera>        
             </a-entity>
 
-            <!-- Poor little monster-->
+            <!-- Safe -->
             <a-entity   id = "safe_object"
-                class = "clickable"
+                class = "facility"
                 position = "2 1.5 -15"
                 rotation = "0 180 0"
                 scale = "1 1 1"
@@ -48,6 +50,26 @@
                 animation-mixer="clip: Idle; loop: repeat"
                 safe-controller="">
                 <a-entity light="type:point; color:yellow; intensity:1.8; distance:10; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:10;" position="0 0 4" ></a-entity>
+            </a-entity>
+
+            <!-- Door -->
+            <a-entity   id = "door_click"
+                class = "clickable"
+                position = "10 1.5 -8"
+                rotation = "0 0 0"
+                scale = "1 1 1"
+                geometry="primitive: box; width: 2; height: 2; depth: 0.5;"
+                material="opacity:0;transparent:true; blending:additive;alphaTest:1"
+                door-controller="">
+                <a-entity   id = "door_object"
+                    class = "facility"
+                    position = "0 0 0"
+                    rotation = "0 0 0"
+                    scale = "1 1 1"
+                    shadow="cast: true; receive: true;"
+                    gltf-model = "#door_model"
+                    animation-mixer="">
+                </a-entity>
             </a-entity>
 
             <!-- Poor little monster-->

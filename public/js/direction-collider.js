@@ -32,7 +32,7 @@ AFRAME.registerComponent('direction-collider', {
         vec.x*=100;
         vec.y*=100;
         vec.z*=-100;
-        console.log(vec);
+        //console.log(vec);
         vec = Oplayer.object3D.worldToLocal(vec);
 
         var rot = new THREE.Vector3();
@@ -64,13 +64,13 @@ AFRAME.registerComponent('direction-collider', {
             norm.x *= (dist-coldist);
             norm.y *= (dist-coldist);
             norm.z *= (dist-coldist);
-            console.log(face.normal);
+            //console.log(face.normal);
             
-            console.log(position);
+            //console.log(position);
             position.x+=norm.x;
             position.y+=norm.y;
             position.z-=norm.z;
-            console.log(position);
+            //console.log(position);
             position.y=0;
             Oplayer.setAttribute('position', position);
         }
