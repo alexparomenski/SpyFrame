@@ -8,12 +8,15 @@
         <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script> 
         <script src="/socket.io/socket.io.js"></script>
         <script src="js/direction-collider.js"></script>
+        <script src= "js/animation-component.js"></script>
     </head>
     <body>
         <a-scene shadow="type: pcfsoft">
             <a-assets timeout="10000">
-                <a-asset-item id="monster_model"   response-type="arraybuffer" src="models/monster.glb"></a-asset-item>
-                <a-asset-item id="facility_model"   response-type="arraybuffer" src="models/facility.glb"></a-asset-item>
+                <a-asset-item id="monster_model"   response-type="arraybuffer" src="/assets/models/monster.glb"></a-asset-item>
+                <a-asset-item id="facility_model"   response-type="arraybuffer" src="/assets/models/facility.glb"></a-asset-item>
+                <a-asset-item crossorigin="anonymous" id="guard-obj" src="/assets/models/Guard.obj">
+                <img crossorigin="anonymous" id="guard-map" src="/assets/textures/Guard.png">
             </a-assets>
 
             <!-- Camera -->
@@ -28,11 +31,51 @@
                                 position="0 0 -1">
                     </a-entity>     
                     <a-entity id="directionVec" direction-collider="" raycaster="far:0.5; near: 0.001; interval:10; objects:.facility">
-                        
                     </a-entity>  
 
-                </a-camera>        
+                    <a-entity id="danger" 
+                        position = "0 0 -0.5"
+                        rotation = "0 0 0"
+                        scale = "0 0 0"
+                        geometry="primitive:plane; width:20.0; height:20.0;" 
+                        material="color:red; opacity: 0.3; transparent: true;"
+                        >
+                        <a-entity position = "-0.2 0 0" text="value: Danger; color:red; font:exo2bold; width:1; anchor:left; baseline:top; wrapCount:14"></a-entity>
+                    </a-entity>
+
+                    <a-entity id="end" 
+                        position = "0 0 -0.5"
+                        rotation = "0 0 0"
+                        scale = "0 0 0"
+                        geometry="primitive:plane; width:20.0; height:20.0;" 
+                        material="color:#002e48; opacity: 1; transparent: false;"
+                        >
+                        <a-entity id ="play" class = "clickable" position = "-0.2 0.05 0.01" text="value:Play again; color:white; font:exo2bold; width:1; anchor:left; baseline:top; wrapCount:20"></a-entity>
+                    </a-entity>        
+                </a-camera>
+
+                
             </a-entity>
+
+
+            <!-- Guard-->
+            <a-entity 
+                id = "guard" 
+                scale = "0.11 0.11 0.11"
+                position = "0 0 0" 
+                rotation = "0 90 0"
+                obj-model= "obj: #guard-obj;"
+                material = "src: #guard-map;"
+                animation__1 =   "property:position;     from: 0 0.5 -2;   to: 10 0.5 -2;   dur:6000; easing:easeInOutSine;          startEvents:animation-start,animationcomplete__8;"
+                animation__2 =   "property:rotation;     from: 0 90 0;     to: 0 180 0;     dur:1000; easing:linear; loop: false;    startEvents:animationcomplete__1;"
+                animation__3 =   "property:position;     from: 10 0.5 -2;  to: 10 0.5 -6;   dur:3500; easing:easeInOutSine;          startEvents:animationcomplete__2; loop:false;" 
+                animation__4 =   "property:rotation;     from: 0 180 0;    to: 0 0 0;       dur:1000; easing:linear; loop: false;    startEvents:animationcomplete__3;"
+                animation__5 =   "property:position;     from: 10 0.5 -6;  to: 10 0.5 -2;   dur:3500; easing:easeInOutSine;          startEvents:animationcomplete__4; loop:false;" 
+                animation__6 =   "property:rotation;     from: 0 0 0;      to: 0 -90 0;     dur:1000; easing:linear; loop: false;    startEvents:animationcomplete__5;"
+                animation__7 =   "property:position;     from: 10 0.5 -2;  to: 0 0.5 -2;    dur:6000; easing:easeInOutSine;          startEvents:animationcomplete__6;"
+                animation__8 =   "property:rotation;     from: 0 -90 0;    to: 0 90 0;      dur:1000; easing:linear; loop: false;    startEvents:animationcomplete__7;"
+                animation-component ="" 
+          ></a-entity>
 
             <!-- Poor little monster-->
             <a-entity   id = "monster_boi"
