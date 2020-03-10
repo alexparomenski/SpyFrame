@@ -6,17 +6,30 @@
         <Script src = "https://aframe.io/releases/1.0.3/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script> 
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="js/direction-collider.js"></script>
+<<<<<<< HEAD
         <script src= "js/animation-component.js"></script>
+=======
+        <script src="js/safe-controller.js"></script>
+        <script src="js/door-controller.js"></script>
+>>>>>>> Environment
     </head>
     <body>
         <a-scene shadow="type: pcfsoft">
             <a-assets timeout="10000">
+<<<<<<< HEAD
                 <a-asset-item id="monster_model"   response-type="arraybuffer" src="/assets/models/monster.glb"></a-asset-item>
                 <a-asset-item id="facility_model"   response-type="arraybuffer" src="/assets/models/facility.glb"></a-asset-item>
                 <a-asset-item crossorigin="anonymous" id="guard-obj" src="/assets/models/Guard.obj">
                 <img crossorigin="anonymous" id="guard-map" src="/assets/textures/Guard.png">
+=======
+                <a-asset-item id="monster_model"   response-type="arraybuffer" src="models/monster.glb"></a-asset-item>
+                <a-asset-item id="facility_model"   response-type="arraybuffer" src="models/facility2.glb"></a-asset-item>
+                <a-asset-item id="safe_model"   response-type="arraybuffer" src="models/safe.glb"></a-asset-item>
+                <a-asset-item id="door_model"   response-type="arraybuffer" src="models/door.glb"></a-asset-item>
+>>>>>>> Environment
             </a-assets>
 
             <!-- Camera -->
@@ -76,6 +89,39 @@
                 animation__8 =   "property:rotation;     from: 0 -90 0;    to: 0 90 0;      dur:1000; easing:linear; loop: false;    startEvents:animationcomplete__7;"
                 animation-component ="" 
           ></a-entity>
+          
+            <!-- Safe -->
+            <a-entity   id = "safe_object"
+                class = "facility"
+                position = "2 1.5 -15"
+                rotation = "0 180 0"
+                scale = "1 1 1"
+                shadow="cast: true; receive: true;"
+                gltf-model = "#safe_model"
+                animation-mixer="clip: Idle; loop: repeat"
+                safe-controller="">
+                <a-entity light="type:point; color:yellow; intensity:1.8; distance:10; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:10;" position="0 0 4" ></a-entity>
+            </a-entity>
+
+            <!-- Door -->
+            <a-entity   id = "door_click"
+                class = "clickable"
+                position = "10 1.5 -8"
+                rotation = "0 0 0"
+                scale = "1 1 1"
+                geometry="primitive: box; width: 2; height: 2; depth: 0.5;"
+                material="opacity:0;transparent:true; blending:additive;alphaTest:1"
+                door-controller="">
+                <a-entity   id = "door_object"
+                    class = "facility"
+                    position = "0 0 0"
+                    rotation = "0 0 0"
+                    scale = "1 1 1"
+                    shadow="cast: true; receive: true;"
+                    gltf-model = "#door_model"
+                    animation-mixer="">
+                </a-entity>
+            </a-entity>
 
             <!-- Poor little monster-->
             <a-entity   id = "monster_boi"
@@ -94,6 +140,40 @@
                 shadow="cast: true; receive: true;"
                 gltf-model = "#facility_model"
                 material = "dithering: false">
+            </a-entity>
+
+            <!-- Hallway Clue TextBox -->
+            <a-entity   id = "text_base"
+                geometry="shape:box; width:0.2; height:0.1; depth:0.1"
+                position = "9 1.5 -4"
+                rotation = "0 90 0"
+                material = "dithering: false; color:black">
+
+                <a-entity   id = "text"
+                    class = "text"
+                    text = "value: 921; align:center; color:#333333;"
+                    position = "0 0 0.06"
+                    rotation = "0 0 0"
+                    scale = "1 1 1"
+                    material = "dithering: false; color:black; opacity:0.3">
+                </a-entity>
+            </a-entity>
+
+            <!-- LaserRoom Clue TextBox -->
+            <a-entity   id = "text_base"
+                geometry="shape:box; width:0.2; height:0.1; depth:0.1"
+                position = "12 1.5 -12"
+                rotation = "0 225 0"
+                material = "dithering: false; color:black">
+
+                <a-entity   id = "text"
+                    class = "text"
+                    text = "value: 476; align:center; color:#333333;"
+                    position = "0 0 0.06"
+                    rotation = "0 0 0"
+                    scale = "1 1 1"
+                    material = "dithering: false; color:black; opacity:0.3">
+                </a-entity>
             </a-entity>
 
             <a-entity id = "laser_beams">
