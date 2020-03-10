@@ -69,7 +69,7 @@ AFRAME.registerComponent('direction-collider', {
             //console.log(position);
             position.x+=norm.x;
             position.y+=norm.y;
-            position.z-=norm.z;
+            position.z+=norm.z;
             //console.log(position);
             position.y=0;
             Oplayer.setAttribute('position', position);

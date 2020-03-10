@@ -9,33 +9,24 @@
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="js/direction-collider.js"></script>
-<<<<<<< HEAD
         <script src= "js/animation-component.js"></script>
-=======
         <script src="js/safe-controller.js"></script>
         <script src="js/door-controller.js"></script>
->>>>>>> Environment
     </head>
     <body>
         <a-scene shadow="type: pcfsoft">
             <a-assets timeout="10000">
-<<<<<<< HEAD
-                <a-asset-item id="monster_model"   response-type="arraybuffer" src="/assets/models/monster.glb"></a-asset-item>
-                <a-asset-item id="facility_model"   response-type="arraybuffer" src="/assets/models/facility.glb"></a-asset-item>
                 <a-asset-item crossorigin="anonymous" id="guard-obj" src="/assets/models/Guard.obj">
                 <img crossorigin="anonymous" id="guard-map" src="/assets/textures/Guard.png">
-=======
-                <a-asset-item id="monster_model"   response-type="arraybuffer" src="models/monster.glb"></a-asset-item>
                 <a-asset-item id="facility_model"   response-type="arraybuffer" src="models/facility2.glb"></a-asset-item>
                 <a-asset-item id="safe_model"   response-type="arraybuffer" src="models/safe.glb"></a-asset-item>
                 <a-asset-item id="door_model"   response-type="arraybuffer" src="models/door.glb"></a-asset-item>
->>>>>>> Environment
             </a-assets>
 
             <!-- Camera -->
             <a-entity id = "cam_rig" position = "0 1.8 0">
                 <a-camera id = "cam_object" class = "cam_class" look-controls position = "0 0 0" far="1000000000">  
-                    <a-entity light="type:point; color:green; intensity:1.8; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:10;" position="0 0 0.9" ></a-entity>
+                    <a-entity light="type:point; color:green; intensity:1.8; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="0 0 0.9" ></a-entity>
                     <a-entity   cursor="rayOrigin:mouse;"
                             raycaster="far:30; interval:100; objects:.clickable;">
                         
@@ -121,14 +112,6 @@
                     gltf-model = "#door_model"
                     animation-mixer="">
                 </a-entity>
-            </a-entity>
-
-            <!-- Poor little monster-->
-            <a-entity   id = "monster_boi"
-                position = "-1.3 1 3.2"
-                rotation = "0 0 0"
-                scale = "0.5 0.5 0.5"
-                gltf-model = "#monster_model">
             </a-entity>
 
             <!-- The Facility, most dynamic stuff will be separate -->
