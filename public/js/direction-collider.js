@@ -54,7 +54,7 @@ AFRAME.registerComponent('direction-collider', {
         //console.log(rot.y);
 
         if (collided!=null) {
-            coldist = 0.6;
+            coldist = 0.8;
             console.log("collided!");
             var norm = new THREE.Vector3();
             norm = face.normal;
