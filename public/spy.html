@@ -12,15 +12,29 @@
         <script src= "js/animation-component.js"></script>
         <script src="js/safe-controller.js"></script>
         <script src="js/door-controller.js"></script>
+        <script src="js/doorpad-controller.js"></script>
     </head>
     <body>
         <a-scene shadow="type: pcfsoft">
             <a-assets timeout="10000">
                 <a-asset-item crossorigin="anonymous" id="guard-obj" src="/assets/models/Guard.obj">
                 <img crossorigin="anonymous" id="guard-map" src="/assets/textures/Guard.png">
+
                 <a-asset-item id="facility_model"   response-type="arraybuffer" src="models/facility2.glb"></a-asset-item>
                 <a-asset-item id="safe_model"   response-type="arraybuffer" src="models/safe.glb"></a-asset-item>
                 <a-asset-item id="door_model"   response-type="arraybuffer" src="models/door.glb"></a-asset-item>
+            
+                <img crossorigin="anonymous" id="btn1-map" src="/images/doorBtn1.png">
+                <img crossorigin="anonymous" id="btn2-map" src="/images/doorBtn2.png">
+                <img crossorigin="anonymous" id="btn3-map" src="/images/doorBtn3.png">
+                <img crossorigin="anonymous" id="btn4-map" src="/images/doorBtn4.png">
+                <img crossorigin="anonymous" id="btn5-map" src="/images/doorBtn5.png">
+                <img crossorigin="anonymous" id="btn6-map" src="/images/doorBtn6.png">
+                <img crossorigin="anonymous" id="btn7-map" src="/images/doorBtn7.png">
+                <img crossorigin="anonymous" id="btn8-map" src="/images/doorBtn8.png">
+                <img crossorigin="anonymous" id="btn9-map" src="/images/doorBtn9.png">
+
+                <img crossorigin="anonymous" id="btnHint-map" src="/images/doorHint.png">
             </a-assets>
 
             <!-- Camera -->
@@ -128,6 +142,108 @@
                 <a-entity light="type:point; color:#ffFFFF; intensity:2; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="0 0 2" ></a-entity>
                 <a-entity light="type:point; color:#00FF00; intensity:2; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="6 0.8 -2" ></a-entity>
             </a-entity>
+
+
+            <!-- Door Keypad -->
+            <a-entity   id = "keypad_Base"
+                geometry="shape:box; width:1; height:1; depth:0.1"
+                position = "8 1.5 -9"
+                rotation = "0 180 0"
+                material = "dithering: false; color:black"
+                doorpad-controller="">
+
+                <a-entity   id = "key1"
+                    class="clickable"
+                    geometry="shape:box; width:0.2; height:0.2; depth:0.1"
+                    position = "-0.3 0.3 0.1"
+                    rotation = "0 0 0"
+                    scale = "1 1 1"
+                    material = "dithering: false; color:white;"
+                    onclick = "addKey(0)">
+                    <a-image src="#btn1-map" position="0 0 0.052" width="0.15" height="0.15"></a-image>
+                </a-entity>
+                <a-entity   id = "key2"
+                class="clickable"
+                geometry="shape:box; width:0.2; height:0.2; depth:0.1"
+                position = "0 0.3 0.1"
+                rotation = "0 0 0"
+                scale = "1 1 1"
+                material = "dithering: false; color:white;"
+                onclick = "addKey(1)">
+                <a-image src="#btn2-map" position="0 0 0.052" width="0.15" height="0.15"></a-image>
+                </a-entity>
+                <a-entity   id = "key3"
+                class="clickable"
+                geometry="shape:box; width:0.2; height:0.2; depth:0.1"
+                position = "0.3 0.3 0.1"
+                rotation = "0 0 0"
+                scale = "1 1 1"
+                material = "dithering: false; color:white;"
+                onclick = "addKey(2)">
+                <a-image src="#btn3-map" position="0 0 0.052" width="0.15" height="0.15"></a-image>
+            </a-entity>
+                <a-entity   id = "key4"
+                    class="clickable"
+                    geometry="shape:box; width:0.2; height:0.2; depth:0.1"
+                    position = "-0.3 0 0.1"
+                    rotation = "0 0 0"
+                    scale = "1 1 1"
+                    material = "dithering: false; color:white;"\
+                    onclick = "addKey(3)">
+                    <a-image src="#btn4-map" position="0 0 0.052" width="0.15" height="0.15"></a-image>
+                </a-entity>
+                <a-entity   id = "key5"
+                class="clickable"
+                geometry="shape:box; width:0.2; height:0.2; depth:0.1"
+                position = "0 0 0.1"
+                rotation = "0 0 0"
+                scale = "1 1 1"
+                material = "dithering: false; color:white;"
+                onclick = "addKey(4)">
+                <a-image src="#btn5-map" position="0 0 0.052" width="0.15" height="0.15"></a-image>
+                </a-entity>
+                <a-entity   id = "key6"
+                class="clickable"
+                geometry="shape:box; width:0.2; height:0.2; depth:0.1"
+                position = "0.3 0 0.1"
+                rotation = "0 0 0"
+                scale = "1 1 1"
+                material = "dithering: false; color:white;"
+                onclick = "addKey(5)">
+                <a-image src="#btn6-map" position="0 0 0.052" width="0.15" height="0.15"></a-image>
+                </a-entity>
+                <a-entity   id = "key7"
+                    class="clickable"
+                    geometry="shape:box; width:0.2; height:0.2; depth:0.1"
+                    position = "-0.3 -0.3 0.1"
+                    rotation = "0 0 0"
+                    scale = "1 1 1"
+                    material = "dithering: false; color:white;"
+                    onclick = "addKey(6)">
+                    <a-image src="#btn7-map" position="0 0 0.052" width="0.15" height="0.15"></a-image>
+                </a-entity>
+                <a-entity   id = "key8"
+                class="clickable"
+                geometry="shape:box; width:0.2; height:0.2; depth:0.1"
+                position = "0 -0.3 0.1"
+                rotation = "0 0 0"
+                scale = "1 1 1"
+                material = "dithering: false; color:white;"
+                onclick = "addKey(7)">
+                <a-image src="#btn8-map" position="0 0 0.052" width="0.15" height="0.15"></a-image>
+                </a-entity>
+                <a-entity   id = "key9"
+                class="clickable"
+                geometry="shape:box; width:0.2; height:0.2; depth:0.1"
+                position = "0.3 -0.3 0.1"
+                rotation = "0 0 0"
+                scale = "1 1 1"
+                material = "dithering: false; color:white;"
+                onclick = "addKey(8)">
+                <a-image src="#btn9-map" position="0 0 0.052" width="0.15" height="0.15"></a-image>
+                </a-entity>
+            </a-entity>
+
 
             <!-- Hallway Clue TextBox -->
             <a-entity   id = "text_base"
@@ -256,8 +372,15 @@
                 socket.emit("playerPosZ", playerPos.z);
             }, 1000 / 60);
               
-
+        
             
+        </script>
+
+        <script>
+            function addKey(key){
+                base = document.querySelector('#keypad_Base');
+                base.setAttribute("doorpad-controller",{input: key});
+            }
         </script>
     </body>
 </html>

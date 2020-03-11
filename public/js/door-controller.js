@@ -1,14 +1,14 @@
 AFRAME.registerComponent('door-controller', {
     init : function(){
         door = document.querySelector('#door_object')
-        door.setAttribute('animation-mixer', "clip: Closed; crossFadeDuration: 0; loop: once; timeScale: 1");
+        door.setAttribute('animation-mixer', "clip: DoorOpen; crossFadeDuration: 0; loop: once; timeScale: 1");
         this.el.addEventListener('click', evt => {
-            if (door.getAttribute('animation-mixer').clip=="Closed")
+            if (door.getAttribute('animation-mixer').clip=="Closed" && 1==1)
             {
                 door.setAttribute('class', "facility");
                 door.setAttribute('animation-mixer', "clip: DoorOpen; crossFadeDuration: 0; loop: once; timeScale: 1");
             }
-            else if (door.getAttribute('animation-mixer').clip=="Open")
+            else if (door.getAttribute('animation-mixer').clip=="Open" && 1==1)
             {
                 door.setAttribute('class', "facility");
                 door.setAttribute('animation-mixer', "clip: DoorClose; crossFadeDuration: 0; loop: once; timeScale: 1");
