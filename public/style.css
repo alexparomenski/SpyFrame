@@ -30,6 +30,60 @@ img{
     position: absolute;
    }
 
+.guard{
+position: absolute;
+}
+
+.Map{
+    background-image: url('images/map.png');
+}
+
+.cluePopup{
+    position: absolute;
+    top: 100px;
+    left:860px;
+}
+.cluePopup img{
+    max-width: 100%;
+}
+
+.cluePopup:hover img
+{
+    opacity: 0.8;
+}
+
+/*This hides the popup aswell places it infront of the image on the page for smoother transition*/
+.popup_plane
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    transition: opacity 0.5s;
+}
+
+/*This is sets the size/margins of the popup, color and decoration*/
+.popup_plane figure
+{
+    display: block;
+    margin: 1em auto;
+    padding: 1em;
+    max-width: 500px;
+    background-color: #008585;
+    text-align: center;
+}
+
+
+.popup_plane figure img
+{
+    max-width: 100%;
+    margin-bottom: 0.5em;
+}
+    
+
 
 /*for media screen for Iphone*/
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){

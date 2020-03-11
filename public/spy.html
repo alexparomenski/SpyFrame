@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Controller Page</title>
+        <title>Spy</title>
 
         <Script src = "https://aframe.io/releases/1.0.3/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
@@ -13,6 +13,7 @@
         <script src="js/safe-controller.js"></script>
         <script src="js/door-controller.js"></script>
         <script src="js/doorpad-controller.js"></script>
+        <script src= "js/click-obj.js"></script>
     </head>
     <body>
         <a-scene shadow="type: pcfsoft">
@@ -35,6 +36,7 @@
                 <img crossorigin="anonymous" id="btn9-map" src="/images/doorBtn9.png">
 
                 <img crossorigin="anonymous" id="btnHint-map" src="/images/doorHint.png">
+                <img crossorigin="anonymous" id="clueImg" src="images/clue.png">
             </a-assets>
 
             <!-- Camera -->
@@ -75,6 +77,17 @@
                 
             </a-entity>
 
+             <!--clue board-->
+             <a-entity
+             class="clickable"   
+             id="clue" 
+             position="7 1.7 -2.99"
+             rotation="0 0 5.7"
+             scale= "1 1 1"
+             geometry="primitive:plane; width: 1.5; height: 1; "
+             material= "src: #clueImg;"
+             click-obj = "">
+             </a-entity>
 
             <!-- Guard-->
             <a-entity 
@@ -363,13 +376,14 @@
 
             camera = document.querySelector(".cam_class");              //finds camera
             playerPos= camera.getAttribute('position')
-
-            console.log(camera);
-            console.log(playerPos);
+            guard = document.querySelector("#guard").getAttribute('position');
 
             setInterval(function() {
-                socket.emit("playerPosX", playerPos.x);
-                socket.emit("playerPosZ", playerPos.z);
+                socket.emit("playerPosX", playerPos.z);
+                socket.emit("playerPosZ", playerPos.x);
+
+                socket.emit("guardPosX", guard.z);
+                socket.emit("guardPosZ", guard.x);
             }, 1000 / 60);
               
         

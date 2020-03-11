@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Navigator</title>
+        <title>Hacker</title>
         <script src="/socket.io/socket.io.js"></script>
         <link href="style.css" rel="stylesheet">
         <title>Hacker</title>
     </head>
     <body>
-        <div class = "Map" style="width: 667px; height: 375px; background: #333F50;"> </div>
+        <div class = "Map" style="width: 1051px; height: 595px; background: url(images/map.png);"> </div>
 
-        <div class = "character" style="width: 15px; height: 15px; background: red;"></div>
+        <div class = "character" style="width: 12px; height: 12px; background: blue;"></div>
+        <div class = "guard" style="width: 12px; height: 12px; background: red;"></div>
 
+        <div class="clueImg">    
+            <figure class="cluePopup">
+                <img src="images/clueButton.png"/>
+            </figure>
+        <div class="clueImg"> 
+
+        <div id="popup" class="popup_plane">
+            <!--creates id for the img that will appear in popup-->
+            <figure id="popupimg">
+                    <!--displays content of the popup-->
+                    <img id="popup_image" src="images/clue.png"/>    
+            </figure>
+        </div>
         
 
         <script>
@@ -22,25 +36,81 @@
             }
             socket.on('connect', function(){
                 console.log("I am connected - " + socket.id);
+                  //recieving data from player ----------------------------------------------------------------------------------------
                 socket.on('sendXPos', function (data){
                     //select dot
                     charDot = document.querySelector(".character"); 
                    
                     //obtain x pos and map
                     var xPos = data;
-                    dotPos = xPos.map(-1, 12 , 0, 667); 
-                    charDot.style.top = dotPos + "px";
-                    console.log("The player is located at: " + charDot.x);
+                    dotPos = xPos.map(1, -22 , 0, 1051); 
+                    charDot.style.left = dotPos + "px";
                 });
                 socket.on('sendZPos', function (data){
                     //select dot
                     charDot = document.querySelector(".character");
                     //obtain z Pos and map
                     var zPos = data;
-                    dotPos = zPos.map(3, -19 , 0, 375); 
-                    charDot.style.left = dotPos + "px";
-                   // console.log("The player is located at: " + zPos);
+                    dotPos = zPos.map(-1, 13 , 0, 595); 
+                    charDot.style.top = dotPos + "px";
                 });
+
+                //recieving guard data-----------------------------------------------------------------------------------------------
+                socket.on('sendGXPos', function (data){
+                    charDot = document.querySelector(".guard");
+                    var xPos = data;
+                    dotPos = xPos.map(1, -22 , 0, 1051); 
+                    charDot.style.left = dotPos + "px";
+                });
+                
+                socket.on('sendGZPos', function (data){
+                    //select dot
+                    charDot = document.querySelector(".guard");
+                    //obtain z Pos and map
+                    var zPos = data;
+                    dotPos = zPos.map(-1, 14 , 0, 595); 
+                    charDot.style.top = dotPos + "px";
+                });
+
+
+                var recieved=false;
+                socket.on('sendClue', function (data){
+                    if (recieved==false){ recieved=true; }
+                    else{}
+                });
+
+                //displaying clue pop up
+                var popups= document.querySelector(".cluePopup");
+                popups.addEventListener('click', function(event){       
+                console.log('clicking');
+                if (recieved==true){
+                     show_popup();
+                }
+                });
+
+                function show_popup ( source, description )
+                {
+                    var p = document.getElementById("popup");
+                    p.style.display = "block";
+                    p.style.opacity = "0";
+                    setTimeout(popup_fade_in, 5);
+                }
+                document.getElementById("popup").addEventListener("click",hide_popup);
+                function popup_fade_in ()
+                {
+                    document.getElementById("popup").style.opacity = "100";
+                }
+
+                function hide_popup ()
+                {
+                    document.getElementById("popup").style.opacity = "0";
+                    setTimeout(popup_display_none, 500);
+                }
+
+                function popup_display_none ()
+                {
+                    document.getElementById("popup").style.display = "none";
+                }
             });
         </script>
     </body>

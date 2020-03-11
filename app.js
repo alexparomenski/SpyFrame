@@ -25,6 +25,7 @@ app.get('/Spy', function(req,res) {
 socketIO.on('connection', function(socket){
     console.log(socket.id + ' - a user connected');
   
+    //player position------------------------------------------------------------------------------------------------
     socket.on("playerPosX", function (data){
         //console.log("Recieving Position");
         //console.log(data);
@@ -36,6 +37,20 @@ socketIO.on('connection', function(socket){
         socketIO.sockets.emit('sendZPos', data);
     });
 
+    //guard Positions -----------------------------------------------------------------------------------------------
+    socket.on("guardPosX", function (data){
+
+        socketIO.sockets.emit('sendGXPos', data);
+    });
+
+    socket.on("guardPosZ", function (data){
+        socketIO.sockets.emit('sendGZPos', data);
+    });
+
+    socket.on("clueClicked", function (data){
+                socketIO.sockets.emit('sendClue', data);
+            });
+            
     socket.on('disconnect', function(){
       console.log('user disconnected');
     });
