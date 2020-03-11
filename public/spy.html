@@ -26,7 +26,7 @@
             <!-- Camera -->
             <a-entity id = "cam_rig" position = "0 1.8 0">
                 <a-camera id = "cam_object" class = "cam_class" look-controls position = "0 0 0" far="1000000000">  
-                    <a-entity light="type:point; color:green; intensity:1.8; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="0 0 0.9" ></a-entity>
+                    <a-entity light="type:point; color:#ffFFFF; intensity:0.7; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="0 0 0.9" ></a-entity>
                     <a-entity   cursor="rayOrigin:mouse;"
                             raycaster="far:30; interval:100; objects:.clickable;">
                         
@@ -79,11 +79,12 @@
                 animation__7 =   "property:position;     from: 10 0.5 -2;  to: 0 0.5 -2;    dur:6000; easing:easeInOutSine;          startEvents:animationcomplete__6;"
                 animation__8 =   "property:rotation;     from: 0 -90 0;    to: 0 90 0;      dur:1000; easing:linear; loop: false;    startEvents:animationcomplete__7;"
                 animation-component ="" 
+                shadow="cast: true; receive: true;"
           ></a-entity>
           
             <!-- Safe -->
             <a-entity   id = "safe_object"
-                class = "facility"
+                class = "clickable"
                 position = "2 1.5 -15"
                 rotation = "0 180 0"
                 scale = "1 1 1"
@@ -122,7 +123,10 @@
                 scale = "1 1 1"
                 shadow="cast: true; receive: true;"
                 gltf-model = "#facility_model"
-                material = "dithering: false">
+                material = "dithering: false;">
+
+                <a-entity light="type:point; color:#ffFFFF; intensity:2; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="0 0 2" ></a-entity>
+                <a-entity light="type:point; color:#00FF00; intensity:2; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="6 0.8 -2" ></a-entity>
             </a-entity>
 
             <!-- Hallway Clue TextBox -->
