@@ -39,6 +39,9 @@
                 <img crossorigin="anonymous" id="clueImg" src="images/clue.png">
             </a-assets>
 
+            <!--Sound effects-->
+            <audio id="guard_hover" crossorigin="anonymous" preload="auto" src="music/guard_hover.wav"></audio>
+
             <!-- Music (Conspiracy Theory Music - Demise of a Nation - Greg Dombrowski (thesecession))-->
             <audio id="music" src="music/gameTheme.mp3" preload="auto" loop="true" autoplay="true" crossorigin="anonymous"></audio>
             <a-entity sound="src: #music; autoplay: true;" ></a-entity>
@@ -110,6 +113,7 @@
                 animation__7 =   "property:position;     from: 10 0.5 -2;  to: 0 0.5 -2;    dur:6000; easing:easeInOutSine;          startEvents:animationcomplete__6;"
                 animation__8 =   "property:rotation;     from: 0 -90 0;    to: 0 90 0;      dur:1000; easing:linear; loop: false;    startEvents:animationcomplete__7;"
                 animation-component ="" 
+                sound="src: #guard_hover; volume: 1; autoplay:true; loop:true;"
                 shadow="cast: true; receive: true;"
           ></a-entity>
           
