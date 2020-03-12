@@ -23,9 +23,9 @@ AFRAME.registerComponent('doorpad-controller', {
         console.log(inputs);
 
         if (inputs[0]==0 
-            && inputs[1]==1 
-            && inputs[2]==2 
-            && inputs[3]==3)
+            && inputs[1]==6 
+            && inputs[2]==1 
+            && inputs[3]==4)
         {
             door = document.querySelector('#door_object');
             if (door.getAttribute('animation-mixer').clip=="Closed")

@@ -123,8 +123,17 @@
                 gltf-model = "#safe_model"
                 animation-mixer="clip: Idle; loop: repeat"
                 safe-controller="">
-                <a-entity light="type:point; color:yellow; intensity:1.8; distance:10; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:10;" position="0 0 4" ></a-entity>
+                <a-entity light="type:point; color:yellow; intensity:1.8; distance:10; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:10;" position="0 0 3" ></a-entity>
+                
             </a-entity>
+            <a-entity   id = "safe_collider"
+                    class = "facility"
+                    geometry="shape:box; width:2; height:2; depth:2"
+                    position = "2 1.5 -15"
+                    rotation = "0 0 0"
+                    scale = "1 1 1"
+                    material="opacity:0;transparent:true; blending:additive;alphaTest:1">
+            </a-entity>.
 
             <!-- Door -->
             <a-entity   id = "door_click"
@@ -156,8 +165,8 @@
                 gltf-model = "#facility_model"
                 material = "dithering: false;">
 
-                <a-entity light="type:point; color:#ffFFFF; intensity:2; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="0 0 2" ></a-entity>
-                <a-entity light="type:point; color:#00FF00; intensity:2; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="6 0.8 -2" ></a-entity>
+                <!-- <a-entity light="type:point; color:#ffFFFF; intensity:2; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="0 0 2" ></a-entity> -->
+                <a-entity light="type:point; color:#55FF55; intensity:2; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="6 0.8 -2" ></a-entity>
             </a-entity>
 
 
@@ -205,7 +214,7 @@
                     position = "-0.3 0 0.1"
                     rotation = "0 0 0"
                     scale = "1 1 1"
-                    material = "dithering: false; color:white;"\
+                    material = "dithering: false; color:white;"
                     onclick = "addKey(3)">
                     <a-image src="#btn4-map" position="0 0 0.052" width="0.15" height="0.15"></a-image>
                 </a-entity>
@@ -303,7 +312,7 @@
                     rotation = "0 0 0"
                     scale = "1 1 1"
                     geometry="primitive: box; width: 8; height: 4; depth: 2;"
-                    material="opacity:0;transparent:true; blending:additive;alphaTest:1">
+                    material="opacity:0;transparent:true; blending:additive;alphaTest:1;visible:false">
                 </a-entity>
 
                 <!-- Laser Beam -->
