@@ -39,6 +39,10 @@
                 <img crossorigin="anonymous" id="clueImg" src="images/clue.png">
             </a-assets>
 
+            <!-- Music (Conspiracy Theory Music - Demise of a Nation - Greg Dombrowski (thesecession))-->
+            <audio id="music" src="music/gameTheme.mp3" preload="auto" loop="true" autoplay="true" crossorigin="anonymous"></audio>
+            <a-entity sound="src: #music; autoplay: true;" ></a-entity>
+
             <!-- Camera -->
             <a-entity id = "cam_rig" position = "0 1.8 0">
                 <a-camera id = "cam_object" class = "cam_class" look-controls position = "0 0 0" far="1000000000">  
