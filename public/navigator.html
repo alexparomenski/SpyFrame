@@ -21,11 +21,25 @@
             </figure>
         <div class="clueImg"> 
 
+        <div class="pinImg">    
+            <figure class="pinPopup">
+                <img src="images/pinButton.png"/>
+            </figure>
+        <div class="pinImg"> 
+
         <div id="popup" class="popup_plane">
             <!--creates id for the img that will appear in popup-->
             <figure id="popupimg">
                     <!--displays content of the popup-->
                     <img id="popup_image" src="images/clue.png"/>    
+            </figure>
+        </div>
+
+        <div id="popup1" class="popup_plane1">
+            <!--creates id for the img that will appear in popup-->
+            <figure id="popupimg1">
+                    <!--displays content of the popup-->
+                    <img id="popup_image" src="images/none.png"/>    
             </figure>
         </div>
         
@@ -91,6 +105,9 @@
                 }
                 });
 
+                var popups1= document.querySelector(".pinPopup");
+                popups1.addEventListener('click', function(event){ show_popup1(); });
+
                 function show_popup ( source, description )
                 {
                     var p = document.getElementById("popup");
@@ -113,6 +130,31 @@
                 function popup_display_none ()
                 {
                     document.getElementById("popup").style.display = "none";
+                }
+
+                //second popup
+                function show_popup1 ( source, description )
+                {
+                    var p = document.getElementById("popup1");
+                    p.style.display = "block";
+                    p.style.opacity = "0";
+                    setTimeout(popup_fade_in1, 5);
+                }
+                document.getElementById("popup1").addEventListener("click",hide_popup1);
+                function popup_fade_in1 ()
+                {
+                    document.getElementById("popup1").style.opacity = "100";
+                }
+
+                function hide_popup1 ()
+                {
+                    document.getElementById("popup1").style.opacity = "0";
+                    setTimeout(popup_display_none1, 500);
+                }
+
+                function popup_display_none1 ()
+                {
+                    document.getElementById("popup1").style.display = "none";
                 }
             });
         </script>

@@ -94,6 +94,7 @@ position: absolute;
 
 .cluePopup{
     position: absolute;
+    min-width: 80%;
     top: 100px;
     left:860px;
 }
@@ -106,6 +107,20 @@ position: absolute;
     opacity: 0.8;
 }
 
+.pinPopup{
+    position: absolute;
+    min-width: 80%;
+    top: 250px;
+    left:860px;
+}
+.pinPopup img{
+    max-width: 100%;
+}
+
+.pinPopup:hover img
+{
+    opacity: 0.8;
+}
 /*This hides the popup aswell places it infront of the image on the page for smoother transition*/
 .popup_plane
 {
@@ -137,7 +152,35 @@ position: absolute;
     margin-bottom: 0.5em;
 }
     
+.popup_plane1
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    transition: opacity 0.5s;
+}
 
+/*This is sets the size/margins of the popup, color and decoration*/
+.popup_plane1 figure
+{
+    display: block;
+    margin: 1em auto;
+    padding: 1em;
+    max-width: 500px;
+    background-color: #008585;
+    text-align: center;
+}
+
+
+.popup_plane1 figure img
+{
+    max-width: 100%;
+    margin-bottom: 0.5em;
+}
 
 /*for media screen for Iphone*/
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
