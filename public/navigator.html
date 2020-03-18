@@ -39,7 +39,25 @@
             <!--creates id for the img that will appear in popup-->
             <figure id="popupimg1">
                     <!--displays content of the popup-->
-                    <img id="popup_image" src="images/none.png"/>    
+                   <img id="xOut" src="images/pinImg/x.png"/>
+                    <input type ="password" readonly class="pinCode">
+                    <div class = "keys">
+                        <div class = "keyImg" id="1"><img src="images/pinImg/1.png"/></div>
+                        <div class = "keyImg" id="2"><img src="images/pinImg/2.png"/></div>
+                        <div class = "keyImg" id="3"><img src="images/pinImg/3.png"/></div> <br>
+
+                        <div class = "keyImg" id="4"><img src="images/pinImg/4.png"/></div>
+                        <div class = "keyImg" id="5"><img src="images/pinImg/5.png"/></div>
+                        <div class = "keyImg" id="6"><img src="images/pinImg/6.png"/></div> <br>
+
+                        <div class = "keyImg" id="7"><img src="images/pinImg/7.png"/></div>
+                        <div class = "keyImg" id="8"><img src="images/pinImg/8.png"/></div>
+                        <div class = "keyImg" id="9"><img src="images/pinImg/9.png"/></div> <br>
+
+                        <div class = "keyImg" id="back"><img src="images/pinImg/back.png"/></div>
+                        <div class = "keyImg" id="0"><img src="images/pinImg/0.png"/></div>
+                        <div class = "keyImg" id="check"><img src="images/pinImg/check.png"/></div> <br>
+                    </div> 
             </figure>
         </div>
         
@@ -96,7 +114,7 @@
                     else{}
                 });
 
-                //displaying clue pop up
+                //displaying clue pop up ---------------------------------------------------------------------
                 var popups= document.querySelector(".cluePopup");
                 popups.addEventListener('click', function(event){       
                 console.log('clicking');
@@ -132,7 +150,7 @@
                     document.getElementById("popup").style.display = "none";
                 }
 
-                //second popup
+                //Displaying pinpad popup -----------------------------------------------------------------------
                 function show_popup1 ( source, description )
                 {
                     var p = document.getElementById("popup1");
@@ -140,7 +158,7 @@
                     p.style.opacity = "0";
                     setTimeout(popup_fade_in1, 5);
                 }
-                document.getElementById("popup1").addEventListener("click",hide_popup1);
+                document.getElementById("xOut").addEventListener("click",hide_popup1);
                 function popup_fade_in1 ()
                 {
                     document.getElementById("popup1").style.opacity = "100";
@@ -149,6 +167,9 @@
                 function hide_popup1 ()
                 {
                     document.getElementById("popup1").style.opacity = "0";
+                    passEntered="";
+                    textDisplay[0].value = passEntered;
+                    textDisplay[0].classList.remove("pinCode--error");
                     setTimeout(popup_display_none1, 500);
                 }
 
@@ -156,6 +177,93 @@
                 {
                     document.getElementById("popup1").style.display = "none";
                 }
+
+                //adding pin pad stuff ----------------------------------------------------------------------------------
+                var passEntered = "";
+                var correctPass = "2324"; 
+                var key= document.getElementsByClassName("keyImg");	
+                var textDisplay= document.getElementsByClassName("pinCode");
+                console.log("this is the text display");
+                //console.log(textDisplay[0].value);
+                var number= key.length; 
+                for(var i =0; i<number; i++){
+                    
+                    key[i].addEventListener("click",function (){
+                        checkID(this);
+                    });
+                }
+
+                function checkID (keyID){
+                   // console.log(keyID.id);
+                   switch (keyID.id){
+                       case '1':
+                           passEntered += '1';
+                           updatePass();
+                           break;
+                       case '2':
+                            passEntered += '2';
+                            updatePass();
+                            break; 
+                       case '3':
+                            passEntered += '3';
+                            updatePass();
+                           break;
+                       case '4':
+                            passEntered += '4';
+                            updatePass();
+                            break; 
+                       case '5':
+                            passEntered += '5';
+                            updatePass();
+                           break;
+                       case '6':
+                            passEntered += '6';
+                            updatePass();
+                            break; 
+                       case '7':
+                            passEntered += '7';
+                            updatePass();
+                           break;
+                       case '8':
+                            passEntered += '8';
+                            updatePass();
+                            break; 
+                       case '9':
+                            passEntered += '9';
+                            updatePass();
+                           break;
+                       case '0':
+                            passEntered += '0';
+                            updatePass();
+                            break; 
+                       case 'back':
+                           passEntered = passEntered.substring(0, passEntered.length-1);
+                           updatePass();
+                           break;
+                       case 'check':
+                            //console.log(passEntered);
+                            checkPass();
+                            break; 
+                   }
+                }
+
+                function checkPass(){
+                    if (passEntered==correctPass){
+                        textDisplay[0].classList.add("pinCode--correct");
+                    }
+                    
+                    else{
+                        passEntered = "";
+                        updatePass();
+                        textDisplay[0].classList.add("pinCode--error");
+                    }
+                }
+
+                function updatePass(){
+                    textDisplay[0].value = passEntered;
+                    textDisplay[0].classList.remove("pinCode--error");
+                }
+
             });
         </script>
     </body>
