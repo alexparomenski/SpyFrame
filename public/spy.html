@@ -41,10 +41,10 @@
 
             <!--Sound effects-->
             <audio id="guard_hover" crossorigin="anonymous" preload="auto" src="music/guard_hover.wav"></audio>
-
+            <audio id="danger_sound" crossorigin="anonymous" preload="auto" src="music/danger.mp3"></audio>
             <!-- Music (Conspiracy Theory Music - Demise of a Nation - Greg Dombrowski (thesecession))-->
             <audio id="music" src="music/gameTheme.mp3" preload="auto" loop="true" autoplay="true" crossorigin="anonymous"></audio>
-            <a-entity sound="src: #music; autoplay: true;" ></a-entity>
+            <a-entity sound="src: #music; autoplay:true; volume:1;" ></a-entity>
 
             <!-- Camera -->
             <a-entity id = "cam_rig" position = "0 1.8 0">
@@ -97,7 +97,9 @@
              </a-entity>
 
             <!-- Guard-->
-            <a-entity 
+            <a-entity
+                sound="src: #guard_hover; volume: 1; autoplay:true; loop:true;">
+            <a-entity
                 id = "guard" 
                 scale = "0.11 0.11 0.11"
                 position = "0 0 0" 
@@ -113,9 +115,11 @@
                 animation__7 =   "property:position;     from: 10 0.5 -2;  to: 0 0.5 -2;    dur:6000; easing:easeInOutSine;          startEvents:animationcomplete__6;"
                 animation__8 =   "property:rotation;     from: 0 -90 0;    to: 0 90 0;      dur:1000; easing:linear; loop: false;    startEvents:animationcomplete__7;"
                 animation-component ="" 
-                sound="src: #guard_hover; volume: 1; autoplay:true; loop:true;"
-                shadow="cast: true; receive: true;"
-          ></a-entity>
+                sound="src: #danger_sound; volume: 0.5; autoplay:false; loop:false;"
+                shadow="cast: true; receive: true;">
+            </a-entity>
+            </a-entity> 
+        
           
             <!-- Safe -->
             <a-entity   id = "safe_object"

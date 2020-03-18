@@ -40,6 +40,7 @@ AFRAME.registerComponent( 'animation-component',{
     },
 
     tick: function (time, timeDelta) {
+        var sound = document.querySelector('#guard');
         const Context_AF = this;
         const Player = document.getElementById("cam_object");
         const Danger = document.getElementById("danger");
@@ -49,10 +50,12 @@ AFRAME.registerComponent( 'animation-component',{
         let Magnitude = Context_AF.findDistance();
         Context_AF.findDirection();
         if(Magnitude < 2 && !caught){
-            //Danger.object3D.scale.set(1.0,1.0,1.0);
+            //Danger.object3D.scale.set(1.0,1.0,1.0)
             Danger.setAttribute('scale', '1 1 1');
             nearGuard = true;
             console.log("You are close to the guard!");
+            // playing sound
+            sound.components.sound.playSound();
             let guardTimer = setInterval(function(){
                 if(nearGuard && !caught){
                     console.log("You've been caught");
