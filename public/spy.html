@@ -288,7 +288,7 @@
 
                 <a-entity   id = "text"
                     class = "text"
-                    text = "value: 921; align:center; color:#333333;"
+                    text = "value: 23/; align:center; color:#333333;"
                     position = "0 0 0.06"
                     rotation = "0 0 0"
                     scale = "1 1 1"
@@ -305,7 +305,7 @@
 
                 <a-entity   id = "text"
                     class = "text"
-                    text = "value: 476; align:center; color:#333333;"
+                    text = "value: /24; align:center; color:#333333;"
                     position = "0 0 0.06"
                     rotation = "0 0 0"
                     scale = "1 1 1"
@@ -395,6 +395,10 @@
                 //console.log("I am connected - " + socket.id);
             });
 
+            socket.on('sendCorrectPass', function(){
+                disableLasers();
+            });
+
             camera = document.querySelector(".cam_class");              //finds camera
             playerPos= camera.getAttribute('position')
             guard = document.querySelector("#guard").getAttribute('position');
@@ -415,6 +419,14 @@
             function addKey(key){
                 base = document.querySelector('#keypad_Base');
                 base.setAttribute("doorpad-controller",{input: key});
+            }
+        </script>
+
+        <script>
+            function disableLasers(){
+                console.log("GOT CORRECT CODE");
+                lasers = document.querySelector('#laser_beams');
+                lasers.parentNode.removeChild(lasers);
             }
         </script>
     </body>

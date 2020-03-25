@@ -250,6 +250,8 @@
                 function checkPass(){
                     if (passEntered==correctPass){
                         textDisplay[0].classList.add("pinCode--correct");
+                        let socket = io();
+                        socket.emit("correctPass", true);
                     }
                     
                     else{

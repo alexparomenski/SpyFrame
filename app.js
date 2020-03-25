@@ -50,6 +50,10 @@ socketIO.on('connection', function(socket){
     socket.on("clueClicked", function (data){
                 socketIO.sockets.emit('sendClue', data);
             });
+
+    socket.on("correctPass", function (data){
+        socketIO.sockets.emit('sendCorrectPass', data);
+    });
             
     socket.on('disconnect', function(){
       console.log('user disconnected');
