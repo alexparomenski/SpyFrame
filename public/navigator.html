@@ -27,6 +27,12 @@
             </figure>
         <div class="pinImg"> 
 
+        <div class="lockImg">    
+            <figure class="lockPopup">
+                <img src="images/lockButton.png"/>
+            </figure>
+        <div class="lockImg"> 
+
         <div id="popup" class="popup_plane">
             <!--creates id for the img that will appear in popup-->
             <figure id="popupimg">
@@ -58,6 +64,20 @@
                         <div class = "keyImg" id="0"><img src="images/pinImg/0.png"/></div>
                         <div class = "keyImg" id="check"><img src="images/pinImg/check.png"/></div> <br>
                     </div> 
+            </figure>
+        </div>
+
+        <div id="popup2" class="popup_plane2">
+            <!--creates id for the img that will appear in popup-->
+            <figure id="popupimg2">
+                    <!--displays content of the popup-->
+                    <img id="xOut2" src="images/pinImg/x.png"/>
+                    <img class="lock" id="popup_image" src="images/lock.png"/> 
+                    <img class="dial" id="popup_image" src="images/dial.png"/> 
+                    <div class= "turns">
+                        <img class="turnL" id="popup_image" src="images/left.png"/> 
+                        <img class="turnR" id="popup_image" src="images/right.png"/> 
+                    </div>
             </figure>
         </div>
         
@@ -126,6 +146,9 @@
                 var popups1= document.querySelector(".pinPopup");
                 popups1.addEventListener('click', function(event){ show_popup1(); });
 
+                var popups2= document.querySelector(".lockPopup");
+                popups2.addEventListener('click', function(event){ show_popup2(); });
+
                 function show_popup ( source, description )
                 {
                     var p = document.getElementById("popup");
@@ -177,6 +200,8 @@
                 {
                     document.getElementById("popup1").style.display = "none";
                 }
+
+
 
                 //adding pin pad stuff ----------------------------------------------------------------------------------
                 var passEntered = "";
@@ -263,6 +288,62 @@
                     textDisplay[0].value = passEntered;
                     textDisplay[0].classList.remove("pinCode--error");
                 }
+                //Displaying lock pad -----------------------------------------------------------------------
+                function show_popup2 ( source, description )
+                {
+                    var p = document.getElementById("popup2");
+                    p.style.display = "block";
+                    p.style.opacity = "0";
+                    setTimeout(popup_fade_in2, 5);
+                }
+                document.getElementById("xOut2").addEventListener("click",hide_popup2);
+                function popup_fade_in2 ()
+                {
+                    document.getElementById("popup2").style.opacity = "100";
+                }
+
+                function hide_popup2 ()
+                {
+                    document.getElementById("popup2").style.opacity = "0";
+                    passEntered="";
+                    textDisplay[0].value = passEntered;
+                    textDisplay[0].classList.remove("pinCode--error");
+                    setTimeout(popup_display_none2, 500);
+                }
+
+                function popup_display_none2 ()
+                {
+                    document.getElementById("popup2").style.display = "none";
+                }
+
+                var leftTurn= document.querySelector(".turnL");
+                leftTurn.addEventListener('click', function(event){          
+                    turnLock("l");
+                });
+
+                var rightTurn= document.querySelector(".turnR");
+                rightTurn.addEventListener('click', function(event){       
+                    turnLock("r");
+                });
+
+                var angle = 0;
+                function turnLock(type){
+                    lockrot = document.querySelector(".lock");
+                    
+                    if(type=="r"){
+                        //console.log(lockrot);
+                        angle = angle+15;
+                        lockrot.setAttribute('style','transform:rotate('+angle+'deg)');
+                    }
+
+                    if(type=="l"){
+                        //console.log(lockrot);
+                        angle = angle-15;
+                        lockrot.setAttribute('style','transform:rotate('+angle+'deg)');
+                    }
+                    
+                }
+
 
             });
         </script>
