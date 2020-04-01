@@ -37,6 +37,7 @@
 
                 <img crossorigin="anonymous" id="btnHint-map" src="/images/doorHint.png">
                 <img crossorigin="anonymous" id="clueImg" src="images/clue.png">
+                <img crossorigin="anonymous" id="spyIntroImg" src="images/spyIntro.png">
             </a-assets>
 
             <!--Sound effects-->
@@ -80,9 +81,18 @@
                         <a-entity id ="play" class = "clickable" position = "-0.2 0.05 0.01" text="value:Play again; color:white; font:exo2bold; width:1; anchor:left; baseline:top; wrapCount:20"></a-entity>
                     </a-entity>        
                 </a-camera>
-
-                
             </a-entity>
+
+             <!--spy instruction plane-->
+             <a-entity   
+             id="spy_Intro" 
+             position="0 1.8 -0.7"
+             rotation="0 0 0"
+             scale= "1 1 1"
+             geometry="primitive:plane; width: 1.5; height: 1;"
+             material= "src: #spyIntroImg; transparent: 0.7;">
+             </a-entity>
+            
 
              <!--clue board-->
              <a-entity
