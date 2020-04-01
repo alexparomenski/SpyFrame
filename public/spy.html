@@ -37,11 +37,13 @@
 
                 <img crossorigin="anonymous" id="btnHint-map" src="/images/doorHint.png">
                 <img crossorigin="anonymous" id="clueImg" src="images/clue.png">
+                <img crossorigin="anonymous" id="spyIntroImg" src="images/spyIntro.png">
             </a-assets>
 
             <!--Sound effects-->
             <audio id="guard_hover" crossorigin="anonymous" preload="auto" src="music/guard_hover.wav"></audio>
             <audio id="danger_sound" crossorigin="anonymous" preload="auto" src="music/danger.mp3"></audio>
+
             <!-- Music (Conspiracy Theory Music - Demise of a Nation - Greg Dombrowski (thesecession))-->
             <audio id="music" src="music/gameTheme.mp3" preload="auto" loop="true" autoplay="true" crossorigin="anonymous"></audio>
             <a-entity sound="src: #music; autoplay:true; volume:1;" ></a-entity>
@@ -81,7 +83,14 @@
                     </a-entity>        
                 </a-camera>
 
-                
+            </a-entity>
+
+            <a-entity id="instruction" 
+                position="0 1.8 -0.7" 
+                rotation="0 0 0" 
+                scale="1 1 1"
+                geometry="primitive:plane; width: 1.5; height: 1; "
+                material= "src: #spyIntroImg; transparent: 0.8;">
             </a-entity>
 
              <!--clue board-->

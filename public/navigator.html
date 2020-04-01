@@ -3,6 +3,7 @@
     <head>
         <title>Hacker</title>
         <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.js"></script>
         <link href="style.css" rel="stylesheet">
         <title>Hacker</title>
     </head>
@@ -26,6 +27,12 @@
                 <img src="images/pinButton.png"/>
             </figure>
         <div class="pinImg"> 
+
+        <div id="popup_intro" class="intro">
+            <!--creates id for the img that will appear in  instruction popup-->
+            <img src="images/hackerIntro.png"/>	
+            <a href="" class="close"><img src="images/pinImg/x.png"/></a>
+        </div>
 
         <div id="popup" class="popup_plane">
             <!--creates id for the img that will appear in popup-->
@@ -60,10 +67,9 @@
                     </div> 
             </figure>
         </div>
-        
 
         <script>
-          // link to the map forum for this   https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
+          // link to the map forum for this https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
           let socket = io();
             //map funtion 
             Number.prototype.map = function (in_min, in_max, out_min, out_max) {
@@ -88,6 +94,26 @@
                     var zPos = data;
                     dotPos = zPos.map(-1, 13 , 0, 595); 
                     charDot.style.top = dotPos + "px";
+                });
+
+                //displaying hacker instructions popup -----------------------------------------------------------------------------
+                $(function(){
+                var overlay = $('<div id="overlay"></div>');
+                overlay.show();
+                overlay.appendTo(document.body);
+                $(".intro").show();
+                $(".close").click(function(){
+                $(".intro").hide();
+                overlay.appendTo(document.body).remove();
+                return false;
+                });
+	
+
+                $(".x").click(function(){
+                $(".intro").hide();
+                overlay.appendTo(document.body).remove();
+                return false;
+                });
                 });
 
                 //recieving guard data-----------------------------------------------------------------------------------------------
