@@ -48,7 +48,7 @@
 
             <!-- Camera -->
             <a-entity id = "cam_rig" position = "0 1.8 0">
-                <a-camera id = "cam_object" class = "cam_class" look-controls position = "0 0 0" far="1000000000">  
+                <a-camera id = "cam_object" class = "cam_class" look-controls position = "2 0 -17" far="1000000000">  
                     <a-entity light="type:point; color:#ffFFFF; intensity:0.7; castShadow: true; shadowCameraNear: 0.1; shadowCameraLeft: -1; shadowCameraBottom: -1;shadowCameraRight: 1;shadowCameraTop: 1; shadowCameraFov: 90.11; shadowRadius: 4.640; distance:5;" position="0 0 0.9" ></a-entity>
                     <a-entity   cursor="rayOrigin:mouse;"
                             raycaster="far:30; interval:100; objects:.clickable;">
@@ -84,8 +84,14 @@
                 
             </a-entity>
 
-            <a-light class="lockLight" type="point" color="green" position="2 1.5 -15" intensity="1.0" angle=""></a-light>
-
+            
+            <a-entity   id = "lockLight"
+                        position = "2.009 1.5 -16.072"
+                        rotation = "0 0 90"
+                        scale = "1 1 1"
+                        geometry="primitive: ring; radiusInner: 0.70; radiusOuter: 0.74;"
+                        material="side: double; color: green; blending: additive; emissive: #00FF00; opacity: 0.0;">
+            </a-entity>
              <!--clue board-->
              <a-entity
              class="clickable"   
@@ -418,6 +424,7 @@
                 base = document.querySelector('#keypad_Base');
                 base.setAttribute("doorpad-controller",{input: key});
             }
+
         </script>
     </body>
 </html>
