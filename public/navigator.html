@@ -334,16 +334,28 @@
                         //console.log(lockrot);
                         angle = angle+15;
                         lockrot.setAttribute('style','transform:rotate('+angle+'deg)');
+                        checkAngle(angle);
+                        console.log(angle);
                     }
 
                     if(type=="l"){
                         //console.log(lockrot);
                         angle = angle-15;
                         lockrot.setAttribute('style','transform:rotate('+angle+'deg)');
+                        checkAngle(angle);
+                        console.log(angle);
                     }
                     
                 }
 
+                function checkAngle(a){
+                    if (a=='105'){
+                        socket.emit("unlockSafe");                        
+                    }
+                    else{
+                        socket.emit("lockSafe");
+                    }
+                }
 
             });
         </script>
