@@ -83,6 +83,15 @@
                 </a-camera>
             </a-entity>
 
+
+            
+            <a-entity   id = "lockLight"
+                        position = "2.009 1.5 -16.072"
+                        rotation = "0 0 90"
+                        scale = "1 1 1"
+                        geometry="primitive: ring; radiusInner: 0.70; radiusOuter: 0.74;"
+                        material="side: double; color: green; blending: additive; emissive: #00FF00; opacity: 0.0;">
+            </a-entity>
              <!--spy instruction plane-->
              <a-entity   
              id="spy_Intro" 
@@ -93,6 +102,7 @@
              material= "src: #spyIntroImg; transparent: 0.7;">
              </a-entity>
             
+
 
              <!--clue board-->
              <a-entity
@@ -430,6 +440,7 @@
                 base = document.querySelector('#keypad_Base');
                 base.setAttribute("doorpad-controller",{input: key});
             }
+
         </script>
 
         <script>

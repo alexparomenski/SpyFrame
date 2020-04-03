@@ -51,13 +51,24 @@ socketIO.on('connection', function(socket){
                 socketIO.sockets.emit('sendClue', data);
             });
 
+    socket.on("unlockSafe", function (data){
+        socketIO.sockets.emit('sendUnlock');
+        console.log("unlocking");
+    });
+
+    socket.on("lockSafe", function (data){
+                socketIO.sockets.emit('sendLock');
+                console.log("locking");
+            });            
+  
     socket.on("correctPass", function (data){
         socketIO.sockets.emit('sendCorrectPass', data);
     });
             
+
     socket.on('disconnect', function(){
       console.log('user disconnected');
-    });
+    });    
 });
 
 //finally, start server
