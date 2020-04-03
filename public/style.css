@@ -50,6 +50,11 @@ img{
      
 }
 
+#rayImg{
+    position: absolute;
+    top: 266px;
+    left:670px;
+}
 @keyframes rotate {
     from {transform: rotate(0) scale(0); transition: transform 0.5s ease-in-out;}
     to {transform: rotate(360deg) scale(1);}
@@ -123,7 +128,7 @@ position: absolute;
 }
 
 
-/*.lockPopup{
+.lockPopup{
     position: absolute;
     min-width: 80%;
     top: 400px;
@@ -136,7 +141,7 @@ position: absolute;
 .lockPopup:hover img
 {
     opacity: 0.8;
-}*/
+}
 
 /*This places the popUp infront of the image on the page for smoother transition*/
 .intro

@@ -12,6 +12,7 @@
         <audio src="music/gameTheme.mp3" loop autoplay></audio>
 
         <div class = "Map" style="width: 1051px; height: 595px; background: url(images/map.png);"> </div>
+        <img id="rayImg" src="images/rayimg.png"/> 
 
         <div class = "character" style="width: 12px; height: 12px; background: blue;"></div>
         <div class = "guard" style="width: 12px; height: 12px; background: red;"></div>
@@ -29,11 +30,11 @@
         <div class="pinImg"> 
 
 
-        <!-- <div class="lockImg">    
+        <div class="lockImg">    
             <figure class="lockPopup">
                 <img src="images/lockButton.png"/>
             </figure>
-        <div class="lockImg"> -->
+        <div class="lockImg">
 
         <div id="popup_intro" class="intro">
             <!--creates id for the img that will appear in  instruction popup-->
@@ -75,11 +76,11 @@
             </figure>
         </div>
 
-  <!-- <!--
+   
         <div id="popup2" class="popup_plane2">
-            <!--creates id for the img that will appear in popup
+            <!--creates id for the img that will appear in popup -->
             <figure id="popupimg2">
-                   displays content of the popup jhkjl
+                   <!--displays content of the popup -->
                     <img id="xOut2" src="images/pinImg/x.png"/>
                     <img class="lock" id="popup_image" src="images/lock.png"/> 
                     <img class="dial" id="popup_image" src="images/dial.png"/> 
@@ -88,7 +89,7 @@
                         <img class="turnR" id="popup_image" src="images/right.png"/> 
                     </div>
             </figure>
-        </div> --> 
+        </div> 
         
 
         <script>
@@ -301,11 +302,14 @@
                    }
                 }
 
+        
                 function checkPass(){
                     if (passEntered==correctPass){
                         textDisplay[0].classList.add("pinCode--correct");
                         let socket = io();
                         socket.emit("correctPass", true);
+                        
+                        document.getElementById("rayImg").style.display = "none";
                     }
                     
                     else{
