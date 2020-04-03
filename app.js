@@ -60,6 +60,12 @@ socketIO.on('connection', function(socket){
                 socketIO.sockets.emit('sendLock');
                 console.log("locking");
             });            
+  
+    socket.on("correctPass", function (data){
+        socketIO.sockets.emit('sendCorrectPass', data);
+    });
+            
+
     socket.on('disconnect', function(){
       console.log('user disconnected');
     });    

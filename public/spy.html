@@ -37,6 +37,7 @@
 
                 <img crossorigin="anonymous" id="btnHint-map" src="/images/doorHint.png">
                 <img crossorigin="anonymous" id="clueImg" src="images/clue.png">
+                <img crossorigin="anonymous" id="spyIntroImg" src="images/spyIntro.png">
             </a-assets>
 
             <!--Sound effects-->
@@ -80,9 +81,8 @@
                         <a-entity id ="play" class = "clickable" position = "-0.2 0.05 0.01" text="value:Play again; color:white; font:exo2bold; width:1; anchor:left; baseline:top; wrapCount:20"></a-entity>
                     </a-entity>        
                 </a-camera>
-
-                
             </a-entity>
+
 
             
             <a-entity   id = "lockLight"
@@ -92,6 +92,18 @@
                         geometry="primitive: ring; radiusInner: 0.70; radiusOuter: 0.74;"
                         material="side: double; color: green; blending: additive; emissive: #00FF00; opacity: 0.0;">
             </a-entity>
+             <!--spy instruction plane-->
+             <a-entity   
+             id="spy_Intro" 
+             position="0 1.8 -0.7"
+             rotation="0 0 0"
+             scale= "1 1 1"
+             geometry="primitive:plane; width: 1.5; height: 1;"
+             material= "src: #spyIntroImg; transparent: 0.7;">
+             </a-entity>
+            
+
+
              <!--clue board-->
              <a-entity
              class="clickable"   
@@ -296,7 +308,7 @@
 
                 <a-entity   id = "text"
                     class = "text"
-                    text = "value: 921; align:center; color:#333333;"
+                    text = "value: 23/; align:center; color:#333333;"
                     position = "0 0 0.06"
                     rotation = "0 0 0"
                     scale = "1 1 1"
@@ -313,7 +325,7 @@
 
                 <a-entity   id = "text"
                     class = "text"
-                    text = "value: 476; align:center; color:#333333;"
+                    text = "value: /24; align:center; color:#333333;"
                     position = "0 0 0.06"
                     rotation = "0 0 0"
                     scale = "1 1 1"
@@ -403,6 +415,10 @@
                 //console.log("I am connected - " + socket.id);
             });
 
+            socket.on('sendCorrectPass', function(){
+                disableLasers();
+            });
+
             camera = document.querySelector(".cam_class");              //finds camera
             playerPos= camera.getAttribute('position')
             guard = document.querySelector("#guard").getAttribute('position');
@@ -425,6 +441,14 @@
                 base.setAttribute("doorpad-controller",{input: key});
             }
 
+        </script>
+
+        <script>
+            function disableLasers(){
+                console.log("GOT CORRECT CODE");
+                lasers = document.querySelector('#laser_beams');
+                lasers.parentNode.removeChild(lasers);
+            }
         </script>
     </body>
 </html>

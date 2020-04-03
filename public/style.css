@@ -122,7 +122,8 @@ position: absolute;
     opacity: 0.8;
 }
 
-.lockPopup{
+
+/*.lockPopup{
     position: absolute;
     min-width: 80%;
     top: 400px;
@@ -135,7 +136,31 @@ position: absolute;
 .lockPopup:hover img
 {
     opacity: 0.8;
+}*/
+
+/*This places the popUp infront of the image on the page for smoother transition*/
+.intro
+{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    transition: opacity 0.5s;
 }
+
+/*This is sets the size/margins of the popup, color and decoration*/
+.intro
+{
+    display: block;
+    margin: 1em auto;
+    padding: 1em;
+    max-width: 100%;
+    text-align: center;
+}
+
+
 /*This hides the popup aswell places it infront of the image on the page for smoother transition*/
 .popup_plane
 {

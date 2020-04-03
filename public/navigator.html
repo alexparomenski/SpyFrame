@@ -3,6 +3,7 @@
     <head>
         <title>Hacker</title>
         <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.js"></script>
         <link href="style.css" rel="stylesheet">
         <title>Hacker</title>
     </head>
@@ -27,11 +28,18 @@
             </figure>
         <div class="pinImg"> 
 
-        <div class="lockImg">    
+
+        <!-- <div class="lockImg">    
             <figure class="lockPopup">
                 <img src="images/lockButton.png"/>
             </figure>
-        <div class="lockImg"> 
+        <div class="lockImg"> -->
+
+        <div id="popup_intro" class="intro">
+            <!--creates id for the img that will appear in  instruction popup-->
+            <img src="images/hackerIntro.png"/>	
+            <a href="" class="close"><img src="images/pinImg/x.png"/></a>
+        </div>
 
         <div id="popup" class="popup_plane">
             <!--creates id for the img that will appear in popup-->
@@ -67,10 +75,11 @@
             </figure>
         </div>
 
+  <!-- <!--
         <div id="popup2" class="popup_plane2">
-            <!--creates id for the img that will appear in popup-->
+            <!--creates id for the img that will appear in popup
             <figure id="popupimg2">
-                    <!--displays content of the popup-->
+                   displays content of the popup jhkjl
                     <img id="xOut2" src="images/pinImg/x.png"/>
                     <img class="lock" id="popup_image" src="images/lock.png"/> 
                     <img class="dial" id="popup_image" src="images/dial.png"/> 
@@ -79,11 +88,11 @@
                         <img class="turnR" id="popup_image" src="images/right.png"/> 
                     </div>
             </figure>
-        </div>
+        </div> --> 
         
 
         <script>
-          // link to the map forum for this   https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
+          // link to the map forum for this https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
           let socket = io();
             //map funtion 
             Number.prototype.map = function (in_min, in_max, out_min, out_max) {
@@ -108,6 +117,26 @@
                     var zPos = data;
                     dotPos = zPos.map(-1, 13 , 0, 595); 
                     charDot.style.top = dotPos + "px";
+                });
+
+                //displaying hacker instructions popup -----------------------------------------------------------------------------
+                $(function(){
+                var overlay = $('<div id="overlay"></div>');
+                overlay.show();
+                overlay.appendTo(document.body);
+                $(".intro").show();
+                $(".close").click(function(){
+                $(".intro").hide();
+                overlay.appendTo(document.body).remove();
+                return false;
+                });
+	
+
+                $(".x").click(function(){
+                $(".intro").hide();
+                overlay.appendTo(document.body).remove();
+                return false;
+                });
                 });
 
                 //recieving guard data-----------------------------------------------------------------------------------------------
@@ -275,6 +304,8 @@
                 function checkPass(){
                     if (passEntered==correctPass){
                         textDisplay[0].classList.add("pinCode--correct");
+                        let socket = io();
+                        socket.emit("correctPass", true);
                     }
                     
                     else{
