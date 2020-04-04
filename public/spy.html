@@ -14,6 +14,7 @@
         <script src="js/door-controller.js"></script>
         <script src="js/doorpad-controller.js"></script>
         <script src= "js/click-obj.js"></script>
+        <script src = "js/video_component.js"></script>
     </head>
     <body>
         <a-scene shadow="type: pcfsoft">
@@ -45,7 +46,9 @@
             <audio id="danger_sound" crossorigin="anonymous" preload="auto" src="music/danger.mp3"></audio>
             <!-- Music (Conspiracy Theory Music - Demise of a Nation - Greg Dombrowski (thesecession))-->
             <audio id="music" src="music/gameTheme.mp3" preload="auto" loop="true" autoplay="true" crossorigin="anonymous"></audio>
-            <a-entity sound="src: #music; autoplay:true; volume:1;" ></a-entity>
+            <a-entity sound="src: #music; autoplay:false; volume:1;" ></a-entity>
+
+    
 
             <!-- Camera -->
             <a-entity id = "cam_rig" position = "0 1.8 0">
@@ -79,7 +82,23 @@
                         material="color:#002e48; opacity: 1; transparent: false;"
                         >
                         <a-entity id ="play" class = "clickable" position = "-0.2 0.05 0.01" text="value:Play again; color:white; font:exo2bold; width:1; anchor:left; baseline:top; wrapCount:20"></a-entity>
-                    </a-entity>        
+                    </a-entity>     
+
+                    <a-entity id="credits" 
+                        position = "0 0 -0.5"
+                        rotation = "0 0 0"
+                        scale = "0 0 0"
+                        geometry="primitive:plane; width:20.0; height:20.0;" 
+                        material="color:#002e48; opacity: 1; transparent: false;"
+                        >
+                        <a-entity class = "clickable" position = "-0.4 0.3 0.01" text="value:CONGRATULATIONS!; color:green; font:exo2bold; width:1; anchor:left; baseline:top; wrapCount:20"></a-entity>
+                        <a-entity class = "clickable" position = "-0.45 0.15 0.01" text="value:You were able to succesfully collaborate with another player to complete the game.; color:white; font:exo2bold; width:1; anchor:left; baseline:top; wrapCount:72"></a-entity>
+                        <a-entity class = "clickable" position = "-0.2 0.10 0.01" text="value:Thanks for playing!; color:white; font:exo2bold; width:1; anchor:left; baseline:top; wrapCount:42"></a-entity>
+                        <a-entity id ="play_again" class = "clickable" position = "-0.21 0.0 0.0" text="value:Play again; color:white; font:exo2bold; width:1; anchor:left; baseline:top; wrapCount:20"></a-entity>
+                    </a-entity>     
+
+                   
+
                 </a-camera>
             </a-entity>
 
@@ -94,26 +113,36 @@
             </a-entity>
              <!--spy instruction plane-->
              <a-entity   
-             id="spy_Intro" 
-             position="0 1.8 -0.7"
-             rotation="0 0 0"
-             scale= "1 1 1"
-             geometry="primitive:plane; width: 1.5; height: 1;"
-             material= "src: #spyIntroImg; transparent: 0.7;">
+                id="spy_Intro" 
+                position="0 1.8 -0.7"
+                rotation="0 0 0"
+                scale= "1 1 1"
+                geometry="primitive:plane; width: 1.5; height: 1;"
+                material= "src: #spyIntroImg; transparent: 0.7;">
              </a-entity>
             
 
+             <!--Credit video
+             <a-entity id="video" 
+                video_component = ""
+                video = "src: #credit_scene; width: 16; height: 9; position: 0 0 -20;"  >
+             <a-entity id ="video_playing" class = "clickable" position = "-0.2 0.05 0.01"  text="value:Video; color:white; font:exo2bold; width:1; anchor:left; baseline:top; wrapCount:20"></a-entity>
+            </a-entity>   
+            -->
+            <!-- Using the asset management system. 
 
+            <a-video id = "video" src="#credit_scene" width="3" height="1.75" position="0 2 0" video_component= ""></a-video>
+-->
              <!--clue board-->
              <a-entity
-             class="clickable"   
-             id="clue" 
-             position="7 1.7 -2.99"
-             rotation="0 0 5.7"
-             scale= "1 1 1"
-             geometry="primitive:plane; width: 1.5; height: 1; "
-             material= "src: #clueImg;"
-             click-obj = "">
+                class="clickable"   
+                id="clue" 
+                position="7 1.7 -2.99"
+                rotation="0 0 5.7"
+                scale= "1 1 1"
+                geometry="primitive:plane; width: 1.5; height: 1; "
+                material= "src: #clueImg;"
+                click-obj = "">
              </a-entity>
 
             <!-- Guard-->

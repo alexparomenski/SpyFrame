@@ -10,17 +10,16 @@ AFRAME.registerComponent( 'animation-component',{
         const Player = document.getElementById("cam_object");
         const End = document.getElementById("end");
         Context_AF.el.emit('animation-start');
-    
+
+
+        // Play again if you get caught by the guard
         PlayText.addEventListener('click', function(event){
-            console.log('click');
             End.setAttribute('scale', '0 0 0');
             caught = false;
             Player.setAttribute('position', '0 0 0');
         });
 
         PlayText.addEventListener('mouseenter', function(event){
-            //e1 = html enitity or element
-            //object3D = three.js (rendering engine) 3D element
             PlayText.object3D.scale.set(1.1,1.1,1.1);
             PlayText.setAttribute('text', 'color:#228B22;');
         });
@@ -45,12 +44,10 @@ AFRAME.registerComponent( 'animation-component',{
         const Player = document.getElementById("cam_object");
         const Danger = document.getElementById("danger");
         const End = document.getElementById("end");
-        //console.log(Player.object3D.position);
-        //console.log(Context_AF.el.object3D.position);
+
         let Magnitude = Context_AF.findDistance();
         Context_AF.findDirection();
         if(Magnitude < 2 && !caught){
-            //Danger.object3D.scale.set(1.0,1.0,1.0)
             Danger.setAttribute('scale', '1 1 1');
             nearGuard = true;
             console.log("You are close to the guard!");
@@ -72,7 +69,6 @@ AFRAME.registerComponent( 'animation-component',{
         }
         else{
             Danger.setAttribute('scale', '0 0 0');
-            //Danger.object3D.scale.set(0,0,0);
             nearGuard = false; 
         }
     },
