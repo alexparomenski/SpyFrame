@@ -47,6 +47,7 @@ AFRAME.registerComponent('safe-controller', {
             {
                 safe.setAttribute('animation-mixer', "clip: Open; crossFadeDuration: .1; loop: repeat; timeScale: 0");
                 //show the credits
+                socket.emit("credPlay");
                 Credits.setAttribute('scale', '1 1 1');
                 Player.setAttribute('position', '0 1000.2 2');
             }

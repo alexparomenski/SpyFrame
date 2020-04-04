@@ -64,7 +64,11 @@ socketIO.on('connection', function(socket){
     socket.on("correctPass", function (data){
         socketIO.sockets.emit('sendCorrectPass', data);
     });
-            
+
+     socket.on("credPlay", function (data){
+        socketIO.sockets.emit('playCred', data);
+        console.log("recieved credit")
+    });        
 
     socket.on('disconnect', function(){
       console.log('user disconnected');

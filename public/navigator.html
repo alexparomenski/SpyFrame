@@ -90,6 +90,16 @@
                     </div>
             </figure>
         </div> 
+
+        <div id="popup3" class="popup_plane3">
+            <!--creates id for the img that will appear in popup -->
+            <figure id="popupimg3">
+              <h1>CONGRATULATIONS</h1>
+              <h5>You were able to successfully collaborate with anothr player to complete the game.</h5>
+              <h3>Thanks for Playing!</h3>
+              <h2><a href="http://localhost:8080/"> Play again</h2>
+            </figure>
+        </div> 
         
 
         <script>
@@ -231,7 +241,12 @@
                     document.getElementById("popup1").style.display = "none";
                 }
 
-
+                //end credit
+                socket.on('playCred', function (data){        
+                    console.log('play credit');
+                        document.getElementById("popup3").style.display = "block";;
+                });
+        
 
                 //adding pin pad stuff ----------------------------------------------------------------------------------
                 var passEntered = "";

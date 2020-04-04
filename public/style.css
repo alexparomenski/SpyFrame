@@ -336,7 +336,43 @@ flex: 1;
     margin-left: -302px;
 }
 
+.popup_plane3
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    transition: opacity 0.5s;
+    
+}
 
+/*This is sets the size/margins of the popup, color and decoration*/
+.popup_plane3 figure
+{
+    display: block;
+    margin: 1em auto;
+    padding: 1em;
+    max-width: 800px;
+    max-height: 400px;
+    background-color: #008585;
+    text-align: center;
+    border-radius: 30px;
+    border-style: solid;
+    border-color: white;
+    border-width: 5px;
+    color: white;
+    font-size: 200%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+a{
+    color: white;
+}
+a:hover{
+    color: #228b22;
+}
 /*for media screen for Iphone*/
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
 
